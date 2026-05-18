@@ -165,7 +165,7 @@ export default function VenuelyLanding() {
       <div className="vly-banner" style={{ background: "#1e2d1a", textAlign: "center" }}>
         <span style={{ fontSize: 13, color: "#8a9e7a" }}>
           <span style={{ color: "#e8e0d0", fontWeight: 500 }}>Now open: </span>
-          Accepting new clients for summer and Christmas 2025 events
+          Accepting new clients for summer and autumn 2026 events
         </span>
       </div>
 
