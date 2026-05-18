@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkoegwqp";
 
@@ -505,8 +506,14 @@ export default function VenuelyLanding() {
           </div>
           <a href="mailto:hello@venuely.london" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none" }} {...h}>hello@venuely.london</a>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem" }}>
-          <span style={{ fontSize: 12, color: "#6b8a5a" }}>© {new Date().getFullYear()} Venuely London. All rights reserved.</span>
+        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+            <span style={{ fontSize: 12, color: "#6b8a5a" }}>© {new Date().getFullYear()} Venuely London. All rights reserved.</span>
+            <span style={{ fontSize: 12, color: "#6b8a5a" }}>·</span>
+            <Link to="/privacy" style={{ fontSize: 12, color: "#6b8a5a", textDecoration: "none" }}>Privacy Policy</Link>
+            <span style={{ fontSize: 12, color: "#6b8a5a" }}>·</span>
+            <Link to="/terms" style={{ fontSize: 12, color: "#6b8a5a", textDecoration: "none" }}>Terms of Service</Link>
+          </div>
           <span style={{ fontSize: 12, color: "#6b8a5a" }}>Free venue finding service · London</span>
         </div>
       </footer>
@@ -664,23 +671,4 @@ export default function VenuelyLanding() {
           .vly-why-grid { grid-template-columns: 1fr; }
 
           .vly-cta-card {
-            flex-direction: column;
-            align-items: stretch;
-            padding: 1.75rem 1.25rem;
-          }
-          .vly-cta-heading { font-size: 24px; }
-          .vly-cta-btn { text-align: center; padding: 15px 24px; white-space: normal; }
-
-          .vly-ig-card {
-            flex-direction: column;
-            align-items: stretch;
-            padding: 1.5rem 1.25rem;
-          }
-          .vly-ig-btn { text-align: center; padding: 12px 24px; white-space: normal; }
-
-          .vly-footer { padding: 2rem 1.25rem; }
-        }
-      `}</style>
-    </div>
-  );
-}
+            flex-d
