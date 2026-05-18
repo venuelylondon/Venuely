@@ -254,11 +254,6 @@ const styles = {
     alignItems: "center",
     paddingBottom: "3rem",
   },
-  logo: {
-    fontSize: 18,
-    fontWeight: 600,
-    letterSpacing: "-0.3px",
-    color: "#1a1a1a",
 const styles = {
   logo: {
     fontSize: 20,
