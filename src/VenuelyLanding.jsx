@@ -59,9 +59,9 @@ export default function VenuelyLanding() {
     <div style={styles.page}>
       {/* Nav */}
       <nav style={styles.nav}>
-        <span style={styles.logo}>
-          Venuely <span style={styles.logoSub}>London</span>
-        </span>
+       <span style={styles.logo}>
+  Venuely <span style={styles.logoSub}>London</span>
+</span>
         <a href="mailto:hello@venuely.london" style={styles.navEmail}>
           hello@venuely.london
         </a>
@@ -259,15 +259,22 @@ const styles = {
     fontWeight: 600,
     letterSpacing: "-0.3px",
     color: "#1a1a1a",
+const styles = {
+  logo: {
+    fontSize: 20,
+    fontWeight: 400,
+    letterSpacing: "-0.5px",
+    color: "#1a1a1a",
+    fontFamily: "Georgia, 'Times New Roman', serif",
   },
   logoSub: {
+    display: "block",
+    fontFamily: "Georgia, serif",
     fontWeight: 400,
-    color: "#888",
-  },
-  navEmail: {
-    fontSize: 13,
-    color: "#888",
-    textDecoration: "none",
+    fontSize: 8,
+    letterSpacing: "3px",
+    color: "#bbb",
+    textTransform: "uppercase",
   },
   hero: {
     paddingBottom: "3rem",
