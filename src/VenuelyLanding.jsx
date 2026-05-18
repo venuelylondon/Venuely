@@ -1,36 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkoegwqp";
 
 export default function VenuelyLanding() {
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [showBrief, setShowBrief] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [brief, setBrief] = useState({
-    eventType: "Christmas party",
-    date: "",
-    guests: "",
-    budget: "",
-    notes: "",
-  });
+  const [brief, setBrief] = useState({ eventType: "Christmas party", budget: "", guests: "" });
+  const [cursor, setCursor] = useState({ x: -100, y: -100 });
+  const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const pageRef = useRef(null);
 
   useEffect(() => {
-    if (showBrief) {
-      setTimeout(() => {
-        document.getElementById("brief-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    }
-  }, [showBrief]);
-
-  const handleEmail = () => {
-    if (!email || !email.includes("@")) { setEmailError(true); return; }
-    setEmailError(false);
-    setShowBrief(true);
-  };
+    setTimeout(() => setVisible(true), 100);
+    const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
 
   const handleSubmit = async () => {
+    if (!email || !email.includes("@")) return;
     setSubmitting(true);
     try {
       await fetch(FORMSPREE_ENDPOINT, {
@@ -44,147 +34,145 @@ export default function VenuelyLanding() {
   };
 
   return (
-    <div style={s.page}>
-      <nav style={s.nav}>
-        <div style={s.logoWrap}>
-          <span style={s.logo}>Venuely</span>
-          <span style={s.logoSub}>London</span>
+    <div ref={pageRef} style={{ cursor: "none", fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", background: "#f5f0e8", minHeight: "100vh" }}>
+
+      {/* Custom V cursor */}
+      <div style={{
+        position: "fixed", top: cursor.y - 20, left: cursor.x - 14,
+        pointerEvents: "none", zIndex: 9999,
+        transition: "top 0.08s ease, left 0.08s ease",
+        transform: hovered ? "scale(1.4)" : "scale(1)",
+      }}>
+        <svg width="28" height="32" viewBox="0 0 28 32">
+          <polygon points="2,4 14,28 26,4 20,4 14,18 8,4" fill="#2c3a1e" opacity="0.85"/>
+        </svg>
+      </div>
+
+      {/* Nav */}
+      <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
+        <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(-10px)", transition: "all 0.6s ease" }}>
+          <div style={{ fontFamily: "Georgia, serif", fontSize: 34, fontWeight: 400, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 8, color: "#8a9e7a", letterSpacing: "4px", textTransform: "uppercase", marginTop: 4 }}>London</div>
         </div>
-        <a href="mailto:hello@venuely.london" style={s.navEmail}>hello@venuely.london</a>
+        <a href="mailto:hello@venuely.london" style={{ fontSize: 13, color: "#8a9e7a", textDecoration: "none", opacity: visible ? 1 : 0, transition: "opacity 0.8s ease 0.2s" }}
+          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+          hello@venuely.london
+        </a>
       </nav>
 
-      <section style={s.hero}>
-        <p style={s.eyebrow}>Corporate event specialists</p>
-        <h1 style={s.headline}>Your company event,<br />fully managed.</h1>
-        <p style={s.subline}>Tell us what you need. We handle the venues, negotiations, contracts, and everything in between. You just show up.</p>
-        <div style={s.emailRow}>
-          <input
-            type="email"
-            placeholder="Your work email"
-            value={email}
-            onChange={(e) => { setEmail(e.target.value); setEmailError(false); }}
-            onKeyDown={(e) => e.key === "Enter" && handleEmail()}
-            style={{ ...s.emailInput, borderColor: emailError ? "#E24B4A" : "#ccc" }}
-          />
-          <button onClick={handleEmail} style={s.btnPrimary}>Get started</button>
-        </div>
-        <p style={s.emailHint}>No commitment. We'll be in touch within one working day.</p>
-      </section>
+      {/* Hero split */}
+      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", minHeight: "calc(100vh - 85px)" }}>
 
-      <hr style={s.divider} />
-
-      <section style={s.howSection}>
-        <p style={s.sectionLabel}>How it works</p>
-        <div style={s.stepsGrid}>
-          {[
-            { num: "01", title: "Send us your brief", desc: "Date, headcount, budget, and the kind of event you have in mind. Takes two minutes." },
-            { num: "02", title: "We do the work", desc: "We shortlist venues, make enquiries, negotiate rates, and arrange site visits on your behalf." },
-            { num: "03", title: "You choose and confirm", desc: "We present you with the best options. You pick one. We handle the contract and payment." },
-          ].map((step) => (
-            <div key={step.num}>
-              <p style={s.stepNum}>{step.num}</p>
-              <p style={s.stepTitle}>{step.title}</p>
-              <p style={s.stepDesc}>{step.desc}</p>
-            </div>
-          ))}
+        {/* Left dark panel */}
+        <div style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition: "all 0.8s ease 0.2s" }}>
+            <p style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event specialists</p>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: 58, fontWeight: 400, color: "#e8e0d0", lineHeight: 1.05, letterSpacing: "-1.5px", marginBottom: "1.75rem" }}>
+              Your event.<br />Fully<br />managed.
+            </h1>
+            <p style={{ fontSize: 15, color: "#8a9e7a", lineHeight: 1.8, maxWidth: 360 }}>
+              Tell us what you need. We handle venues, negotiations, contracts, and everything in between. You just show up.
+            </p>
+          </div>
+          <div style={{ opacity: visible ? 1 : 0, transition: "opacity 1s ease 0.6s" }}>
+            {["London venues only", "Response within 24 hours", "Free to use for event planners"].map(item => (
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#6b8a5a", flexShrink: 0 }} />
+                <span style={{ fontSize: 13, color: "#6b8a5a" }}>{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div style={s.trustRow}>
-          {["London venues only", "Response within 24 hours", "Free to use for event planners"].map((item) => (
-            <span key={item} style={s.trustItem}><span style={s.trustDot} />{item}</span>
-          ))}
-        </div>
-      </section>
 
-      {showBrief && (
-        <section id="brief-section" style={s.briefSection}>
+        {/* Right form panel */}
+        <div style={{ background: "#f0ebe0", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           {!submitted ? (
-            <>
-              <p style={s.briefTitle}>Tell us about your event</p>
-              <p style={s.briefSub}>The more detail, the better we can match you.</p>
-              <div style={s.formGrid}>
-                <div style={s.formField}>
-                  <label style={s.fieldLabel}>Event type</label>
-                  <select style={s.fieldInput} value={brief.eventType} onChange={(e) => setBrief({ ...brief, eventType: e.target.value })}>
-                    {["Christmas party", "Summer party", "Team away day", "Conference", "Client dinner", "Other"].map((o) => <option key={o}>{o}</option>)}
-                  </select>
+            <div style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease 0.4s" }}>
+              <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Get started</p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: 28, color: "#2c3a1e", marginBottom: "2rem", fontWeight: 400, lineHeight: 1.2 }}>Tell us about<br />your event</p>
+              {[
+                { label: "Work email", type: "email", placeholder: "you@company.com", val: email, set: setEmail, key: "email" },
+              ].map(f => (
+                <div key={f.key} style={{ marginBottom: 14 }}>
+                  <label style={{ display: "block", fontSize: 11, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.5px", marginBottom: 5 }}>{f.label}</label>
+                  <input type={f.type} placeholder={f.placeholder} value={f.val} onChange={e => f.set(e.target.value)}
+                    onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+                    style={{ width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "10px 14px", fontFamily: "inherit", fontSize: 14, color: "#2c3a1e", outline: "none" }} />
                 </div>
-                <div style={s.formField}>
-                  <label style={s.fieldLabel}>Approximate date</label>
-                  <input type="month" style={s.fieldInput} value={brief.date} onChange={(e) => setBrief({ ...brief, date: e.target.value })} />
+              ))}
+              <div style={{ marginBottom: 14 }}>
+                <label style={{ display: "block", fontSize: 11, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.5px", marginBottom: 5 }}>Event type</label>
+                <select value={brief.eventType} onChange={e => setBrief({ ...brief, eventType: e.target.value })}
+                  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+                  style={{ width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "10px 14px", fontFamily: "inherit", fontSize: 14, color: "#2c3a1e", outline: "none" }}>
+                  {["Christmas party", "Summer party", "Team away day", "Conference", "Client dinner", "Other"].map(o => <option key={o}>{o}</option>)}
+                </select>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 14 }}>
+                <div>
+                  <label style={{ display: "block", fontSize: 11, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.5px", marginBottom: 5 }}>Guests</label>
+                  <input type="number" placeholder="e.g. 60" value={brief.guests} onChange={e => setBrief({ ...brief, guests: e.target.value })}
+                    style={{ width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "10px 14px", fontFamily: "inherit", fontSize: 14, color: "#2c3a1e", outline: "none" }} />
                 </div>
-                <div style={s.formField}>
-                  <label style={s.fieldLabel}>Number of guests</label>
-                  <input type="number" placeholder="e.g. 60" style={s.fieldInput} value={brief.guests} onChange={(e) => setBrief({ ...brief, guests: e.target.value })} />
-                </div>
-                <div style={s.formField}>
-                  <label style={s.fieldLabel}>Total budget (inc. VAT)</label>
-                  <input type="text" placeholder="e.g. £5,000" style={s.fieldInput} value={brief.budget} onChange={(e) => setBrief({ ...brief, budget: e.target.value })} />
-                </div>
-                <div style={{ ...s.formField, gridColumn: "1 / -1" }}>
-                  <label style={s.fieldLabel}>Anything else we should know?</label>
-                  <textarea placeholder="Preferred area of London, dietary requirements, vibe you're going for..." style={{ ...s.fieldInput, minHeight: 80, resize: "vertical" }} value={brief.notes} onChange={(e) => setBrief({ ...brief, notes: e.target.value })} />
+                <div>
+                  <label style={{ display: "block", fontSize: 11, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.5px", marginBottom: 5 }}>Budget</label>
+                  <input type="text" placeholder="e.g. £5,000" value={brief.budget} onChange={e => setBrief({ ...brief, budget: e.target.value })}
+                    style={{ width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "10px 14px", fontFamily: "inherit", fontSize: 14, color: "#2c3a1e", outline: "none" }} />
                 </div>
               </div>
-              <button onClick={handleSubmit} disabled={submitting} style={{ ...s.btnSubmit, opacity: submitting ? 0.6 : 1 }}>
+              <button onClick={handleSubmit} disabled={submitting}
+                onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+                style={{ width: "100%", background: "#2c3a1e", color: "#f0ebe0", fontFamily: "inherit", fontSize: 15, fontWeight: 500, padding: "14px", borderRadius: 6, border: "none", cursor: "none", opacity: submitting ? 0.6 : 1, transition: "opacity 0.2s, transform 0.15s", transform: hovered ? "scale(1.01)" : "scale(1)" }}>
                 {submitting ? "Sending..." : "Send my brief"}
               </button>
-            </>
+            </div>
           ) : (
-            <div style={s.successMsg}>
-              <div style={s.successIcon}>✓</div>
-              <p style={s.successTitle}>Brief received. We're on it.</p>
-              <p style={s.successSub}>Expect to hear from us at {email} within one working day.</p>
+            <div style={{ textAlign: "center", opacity: visible ? 1 : 0, transition: "opacity 0.5s" }}>
+              <div style={{ fontFamily: "Georgia, serif", fontSize: 48, color: "#2c3a1e", marginBottom: "1rem" }}>✓</div>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: 24, color: "#2c3a1e", marginBottom: "0.5rem" }}>Brief received.</p>
+              <p style={{ fontSize: 14, color: "#8a9e7a" }}>We'll be in touch within one working day.</p>
             </div>
           )}
-        </section>
-      )}
+        </div>
+      </div>
 
-      <footer style={s.footer}>
-        <span style={s.footerLogo}>Venuely</span>
-        <span style={s.footerCopy}>© {new Date().getFullYear()} Venuely London</span>
+      {/* How it works */}
+      <div style={{ padding: "4rem 3rem", background: "#f5f0e8" }}>
+        <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "2.5rem" }}>How it works</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
+          {[
+            { num: "01", title: "Send us your brief", desc: "Date, headcount, budget, and the kind of event you have in mind. Takes two minutes." },
+            { num: "02", title: "We do the work", desc: "We shortlist venues, negotiate rates, and arrange site visits on your behalf." },
+            { num: "03", title: "You choose and confirm", desc: "We present the best options. You pick one. We handle the contract and payment." },
+          ].map(step => (
+            <div key={step.num}
+              onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+              style={{ transition: "transform 0.2s ease", cursor: "none" }}>
+              <div style={{ fontFamily: "Georgia, serif", fontSize: 48, color: "#d4c9b5", lineHeight: 1, marginBottom: "0.75rem" }}>{step.num}</div>
+              <div style={{ fontSize: 15, fontWeight: 500, color: "#2c3a1e", marginBottom: "0.5rem" }}>{step.title}</div>
+              <div style={{ fontSize: 13, color: "#8a9e7a", lineHeight: 1.7 }}>{step.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer style={{ padding: "1.75rem 3rem", background: "#2c3a1e", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div>
+          <div style={{ fontFamily: "Georgia, serif", fontSize: 20, color: "#e8e0d0", fontWeight: 400 }}>Venuely</div>
+          <div style={{ fontSize: 8, color: "#6b8a5a", letterSpacing: "3px", textTransform: "uppercase", marginTop: 2 }}>London</div>
+        </div>
+        <span style={{ fontSize: 12, color: "#6b8a5a" }}>© {new Date().getFullYear()} Venuely London</span>
       </footer>
+
+      {/* Mobile styles */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
+        * { box-sizing: border-box; }
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }
-
-const s = {
-  page: { maxWidth: 720, margin: "0 auto", padding: "2rem 1.5rem", fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", color: "#1a1a1a", backgroundColor: "#ffffff", minHeight: "100vh" },
-  nav: { display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "3rem" },
-  logoWrap: { display: "flex", flexDirection: "column" },
-  logo: { fontSize: 22, fontWeight: 400, letterSpacing: "-0.5px", color: "#1a1a1a", fontFamily: "Georgia, 'Times New Roman', serif", lineHeight: 1.1 },
-  logoSub: { fontSize: 8, fontWeight: 400, letterSpacing: "3px", color: "#bbb", fontFamily: "Georgia, serif", textTransform: "uppercase" },
-  navEmail: { fontSize: 13, color: "#888", textDecoration: "none" },
-  hero: { paddingBottom: "3rem" },
-  eyebrow: { fontSize: 11, letterSpacing: "1.8px", textTransform: "uppercase", color: "#999", marginBottom: "1.25rem" },
-  headline: { fontSize: 42, fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.8px", color: "#1a1a1a", marginBottom: "1.25rem" },
-  subline: { fontSize: 17, color: "#666", lineHeight: 1.65, maxWidth: 480, marginBottom: "2.5rem" },
-  emailRow: { display: "flex", gap: 10, maxWidth: 480, flexWrap: "wrap" },
-  emailInput: { flex: 1, minWidth: 200, height: 46, padding: "0 14px", fontSize: 15, border: "1px solid #ccc", borderRadius: 8, outline: "none", color: "#1a1a1a", backgroundColor: "#fff", fontFamily: "inherit" },
-  btnPrimary: { height: 46, padding: "0 22px", backgroundColor: "#1a1a1a", color: "#fff", border: "none", borderRadius: 8, fontSize: 15, fontWeight: 500, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" },
-  emailHint: { fontSize: 12, color: "#aaa", marginTop: 10 },
-  divider: { border: "none", borderTop: "1px solid #f0f0f0", margin: "2.5rem 0" },
-  howSection: { marginBottom: "2rem" },
-  sectionLabel: { fontSize: 11, letterSpacing: "1.8px", textTransform: "uppercase", color: "#999", marginBottom: "1.5rem" },
-  stepsGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "1.5rem", marginBottom: "2rem" },
-  stepNum: { fontSize: 11, fontWeight: 600, color: "#bbb", marginBottom: 6, letterSpacing: "0.5px" },
-  stepTitle: { fontSize: 15, fontWeight: 600, color: "#1a1a1a", marginBottom: 6 },
-  stepDesc: { fontSize: 13, color: "#777", lineHeight: 1.6 },
-  trustRow: { display: "flex", flexWrap: "wrap", gap: "1.25rem", marginTop: "1.5rem" },
-  trustItem: { display: "flex", alignItems: "center", gap: 7, fontSize: 13, color: "#888" },
-  trustDot: { width: 5, height: 5, borderRadius: "50%", backgroundColor: "#ccc", flexShrink: 0 },
-  briefSection: { backgroundColor: "#f9f9f9", borderRadius: 12, padding: "1.75rem", marginTop: "1.5rem" },
-  briefTitle: { fontSize: 16, fontWeight: 600, color: "#1a1a1a", marginBottom: 4 },
-  briefSub: { fontSize: 13, color: "#888", marginBottom: "1.25rem" },
-  formGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 },
-  formField: { display: "flex", flexDirection: "column", gap: 5 },
-  fieldLabel: { fontSize: 12, color: "#888", fontWeight: 500, letterSpacing: "0.3px" },
-  fieldInput: { fontSize: 14, padding: "8px 10px", border: "1px solid #e0e0e0", borderRadius: 8, backgroundColor: "#fff", color: "#1a1a1a", outline: "none", fontFamily: "inherit" },
-  btnSubmit: { width: "100%", height: 44, backgroundColor: "#1a1a1a", color: "#fff", border: "none", borderRadius: 8, fontSize: 15, fontWeight: 500, cursor: "pointer", marginTop: 4, fontFamily: "inherit" },
-  successMsg: { textAlign: "center", padding: "1.5rem 0" },
-  successIcon: { fontSize: 32, color: "#3B6D11", marginBottom: 12 },
-  successTitle: { fontSize: 16, fontWeight: 600, color: "#1a1a1a", marginBottom: 6 },
-  successSub: { fontSize: 13, color: "#888" },
-  footer: { marginTop: "3rem", paddingTop: "1.5rem", borderTop: "1px solid #f0f0f0", display: "flex", justifyContent: "space-between", alignItems: "center" },
-  footerLogo: { fontSize: 14, fontWeight: 400, color: "#bbb", fontFamily: "Georgia, serif" },
-  footerCopy: { fontSize: 12, color: "#bbb" },
-};
