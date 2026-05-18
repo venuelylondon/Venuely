@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkoegwqp";
 
 export default function VenuelyLanding() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
@@ -37,7 +38,7 @@ export default function VenuelyLanding() {
       await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, phone, company, ...brief, budget: brief.budget === "Other" ? otherBudget : brief.budget }),
+        body: JSON.stringify({ name, company, email, phone, eventType: brief.eventType, guests: brief.guests, budget: brief.budget === "Other" ? otherBudget : brief.budget, requirements: brief.requirements }),
       });
     } catch (e) {}
     setSubmitting(false);
@@ -134,23 +135,28 @@ export default function VenuelyLanding() {
               <p style={{ fontFamily: "Georgia, serif", fontSize: 28, color: "#2c3a1e", marginBottom: "1.75rem", fontWeight: 400, lineHeight: 1.2 }}>Tell us about<br />your event</p>
 
               <div style={{ marginBottom: 12 }}>
+                <label style={labelStyle}>Your name</label>
+                <input type="text" placeholder="your full name" value={name} onChange={e => setName(e.target.value)} style={fieldStyle} {...h} />
+              </div>
+
+              <div style={{ marginBottom: 12 }}>
                 <label style={labelStyle}>Your company</label>
-                <input type="text" placeholder="Company name" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
+                <input type="text" placeholder="e.g. Acme Ltd" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
                 <div>
                   <label style={labelStyle}>Work email</label>
-                  <input type="email" placeholder="you@company.com" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                  <input type="email" placeholder="your work email" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
                 </div>
                 <div>
                   <label style={labelStyle}>Phone number</label>
-                  <input type="tel" placeholder="+44 7700 000000" value={phone} onChange={e => { setPhone(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                  <input type="tel" placeholder="your phone number" value={phone} onChange={e => { setPhone(e.target.value); setError(""); }} style={fieldStyle} {...h} />
                 </div>
               </div>
 
               {error && (
-                <p style={{ fontSize: 12, color: "#993C1D", marginBottom: 12, lineHeight: 1.5 }}>{error}</p>
+                <p style={{ color: "#993C1D", fontSize: 12, lineHeight: 1.5, marginBottom: 12 }}>{error}</p>
               )}
 
               <div style={{ marginBottom: 12 }}>
@@ -182,7 +188,7 @@ export default function VenuelyLanding() {
 
               <div style={{ marginBottom: 16 }}>
                 <label style={labelStyle}>Special requirements or requests</label>
-                <textarea placeholder="Dietary requirements, preferred areas of London, accessibility needs, anything that helps us find the perfect venue..." value={brief.requirements} onChange={e => setBrief({ ...brief, requirements: e.target.value })} style={{ ...fieldStyle, minHeight: 80, resize: "vertical" }} />
+                <textarea placeholder="tell us anything that will help us find the perfect venue for you" value={brief.requirements} onChange={e => setBrief({ ...brief, requirements: e.target.value })} style={{ ...fieldStyle, minHeight: 80, resize: "vertical" }} />
               </div>
 
               <p style={{ fontSize: 11, color: "#aaa", marginBottom: 10, lineHeight: 1.5 }}>
@@ -227,7 +233,7 @@ export default function VenuelyLanding() {
             <h2 style={{ fontFamily: "Georgia, serif", fontSize: 34, color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a meeting with the team</h2>
             <p style={{ fontSize: 15, color: "#8a9e7a", maxWidth: 400, lineHeight: 1.8 }}>Book a free 20 minute call with us. We'll listen to what you need and take it from there.</p>
           </div>
-          <a href="mailto:hello@venuely.london?subject=I'd like to book a call" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "15px 32px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }} {...h}>
+          <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "15px 32px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }} {...h}>
             Book a call
           </a>
         </div>
@@ -244,7 +250,7 @@ export default function VenuelyLanding() {
             </div>
             <div>
               <p style={{ fontSize: 16, fontWeight: 500, color: "#2c3a1e", marginBottom: 4 }}>Follow us on Instagram</p>
-              <p style={{ fontSize: 13, color: "#8a9e7a" }}>@venuely.london · Venue inspiration, event ideas and behind the scenes</p>
+              <p style={{ fontSize: 13, color: "#8a9e7a" }}>@venuely.london</p>
             </div>
           </div>
           <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, padding: "12px 24px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }} {...h}>
