@@ -4,9 +4,12 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkoegwqp";
 
 export default function VenuelyLanding() {
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [otherBudget, setOtherBudget] = useState("");
+  const [error, setError] = useState("");
   const [brief, setBrief] = useState({ eventType: "Christmas party", budget: "Under £2,000", guests: "", requirements: "" });
   const [cursor, setCursor] = useState({ x: -100, y: -100 });
   const [hovered, setHovered] = useState(false);
@@ -20,13 +23,21 @@ export default function VenuelyLanding() {
   }, []);
 
   const handleSubmit = async () => {
-    if (!email || !email.includes("@")) return;
+    setError("");
+    if (!email && !phone) {
+      setError("Please provide at least a work email or phone number to continue.");
+      return;
+    }
+    if (email && !email.includes("@")) {
+      setError("Please enter a valid email address.");
+      return;
+    }
     setSubmitting(true);
     try {
       await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, ...brief, budget: brief.budget === "Other" ? otherBudget : brief.budget }),
+        body: JSON.stringify({ email, phone, company, ...brief, budget: brief.budget === "Other" ? otherBudget : brief.budget }),
       });
     } catch (e) {}
     setSubmitting(false);
@@ -49,21 +60,26 @@ export default function VenuelyLanding() {
 
   const h = { onMouseEnter: () => setHovered(true), onMouseLeave: () => setHovered(false) };
   const fade = (delay = 0) => ({ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: `all 0.8s ease ${delay}s` });
-  const field = { width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "11px 14px", fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#2c3a1e", outline: "none" };
-  const label = { display: "block", fontSize: 12, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.3px", marginBottom: 5 };
-
-  // Thin serif V cursor path - matches the wordmark style
-  const VCursor = () => (
-    <div style={{ position: "fixed", top: cursor.y - 24, left: cursor.x - 12, pointerEvents: "none", zIndex: 9999, transform: hovered ? "scale(1.4)" : "scale(1)", transition: "transform 0.15s ease, top 0.05s ease, left 0.05s ease" }}>
-      <svg width="24" height="32" viewBox="0 0 24 32">
-        <text x="12" y="28" fontFamily="Georgia, 'Times New Roman', serif" fontSize="32" fontWeight="300" fill="#e8e0d0" textAnchor="middle" stroke="#2c3a1e" strokeWidth="0.5">V</text>
-      </svg>
-    </div>
-  );
+  const fieldStyle = { width: "100%", background: "white", border: "1px solid #d4c9b5", borderRadius: 6, padding: "11px 14px", fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#2c3a1e", outline: "none" };
+  const labelStyle = { display: "block", fontSize: 12, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.3px", marginBottom: 5 };
 
   return (
     <div style={{ cursor: "none", fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", background: "#f5f0e8", minHeight: "100vh", width: "100%" }}>
-      <VCursor />
+
+      {/* Custom V cursor - visible on all backgrounds */}
+      <div style={{
+        position: "fixed",
+        top: cursor.y - 24,
+        left: cursor.x - 12,
+        pointerEvents: "none",
+        zIndex: 9999,
+        transform: hovered ? "scale(1.4)" : "scale(1)",
+        transition: "transform 0.15s ease, top 0.05s ease, left 0.05s ease",
+      }}>
+        <svg width="24" height="32" viewBox="0 0 24 32">
+          <text x="12" y="28" fontFamily="Georgia, 'Times New Roman', serif" fontSize="32" fontWeight="300" fill="#e8e0d0" textAnchor="middle" stroke="#2c3a1e" strokeWidth="1.5" paintOrder="stroke">V</text>
+        </svg>
+      </div>
 
       {/* Offer banner */}
       <div style={{ background: "#1e2d1a", padding: "11px 3rem", textAlign: "center" }}>
@@ -79,13 +95,15 @@ export default function VenuelyLanding() {
           <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 38, fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
           <div style={{ fontSize: 8, color: "#8a9e7a", letterSpacing: "4px", textTransform: "uppercase", marginTop: 5 }}>London</div>
         </div>
-        <a href="mailto:hello@venuely.london" style={{ fontSize: 14, color: "#8a9e7a", textDecoration: "none", ...fade(0.2) }} {...h}>hello@venuely.london</a>
+        <a href="mailto:hello@venuely.london" style={{ fontSize: 14, color: "#8a9e7a", textDecoration: "none", ...fade(0.2) }} {...h}>
+          hello@venuely.london
+        </a>
       </nav>
 
-      {/* Hero */}
+      {/* Hero split */}
       <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", minHeight: "calc(100vh - 112px)" }}>
 
-        {/* Left */}
+        {/* Left dark panel */}
         <div style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div style={fade(0.2)}>
             <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event specialists</p>
@@ -97,9 +115,9 @@ export default function VenuelyLanding() {
             </p>
           </div>
           <div style={fade(0.5)}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 2.5rem" }}>
+            <div style={{ columns: 2, columnGap: "2.5rem" }}>
               {bullets.map(item => (
-                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10, breakInside: "avoid" }}>
                   <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#6b8a5a", flexShrink: 0, marginTop: 7 }} />
                   <span style={{ fontSize: 13, color: "#6b8a5a", lineHeight: 1.6 }}>{item}</span>
                 </div>
@@ -108,7 +126,7 @@ export default function VenuelyLanding() {
           </div>
         </div>
 
-        {/* Right form */}
+        {/* Right form panel */}
         <div style={{ background: "#f0ebe0", padding: "3.5rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflowY: "auto" }}>
           {!submitted ? (
             <div style={fade(0.4)}>
@@ -116,25 +134,40 @@ export default function VenuelyLanding() {
               <p style={{ fontFamily: "Georgia, serif", fontSize: 28, color: "#2c3a1e", marginBottom: "1.75rem", fontWeight: 400, lineHeight: 1.2 }}>Tell us about<br />your event</p>
 
               <div style={{ marginBottom: 12 }}>
-                <label style={label}>Work email</label>
-                <input type="email" placeholder="you@company.com" value={email} onChange={e => setEmail(e.target.value)} style={field} {...h} />
+                <label style={labelStyle}>Your company</label>
+                <input type="text" placeholder="Company name" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
               </div>
 
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
+                <div>
+                  <label style={labelStyle}>Work email</label>
+                  <input type="email" placeholder="you@company.com" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Phone number</label>
+                  <input type="tel" placeholder="+44 7700 000000" value={phone} onChange={e => { setPhone(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                </div>
+              </div>
+
+              {error && (
+                <p style={{ fontSize: 12, color: "#993C1D", marginBottom: 12, lineHeight: 1.5 }}>{error}</p>
+              )}
+
               <div style={{ marginBottom: 12 }}>
-                <label style={label}>Event type</label>
-                <select value={brief.eventType} onChange={e => setBrief({ ...brief, eventType: e.target.value })} style={field} {...h}>
+                <label style={labelStyle}>Event type</label>
+                <select value={brief.eventType} onChange={e => setBrief({ ...brief, eventType: e.target.value })} style={fieldStyle} {...h}>
                   {["Christmas party","Summer party","Team away day","Conference","Client dinner","Exhibition","Awards show","Product launch","Special occasion","Wedding","Other"].map(o => <option key={o}>{o}</option>)}
                 </select>
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
                 <div>
-                  <label style={label}>Number of guests</label>
-                  <input type="number" placeholder="e.g. 60" value={brief.guests} onChange={e => setBrief({ ...brief, guests: e.target.value })} style={field} />
+                  <label style={labelStyle}>Number of guests</label>
+                  <input type="number" placeholder="e.g. 60" value={brief.guests} onChange={e => setBrief({ ...brief, guests: e.target.value })} style={fieldStyle} />
                 </div>
                 <div>
-                  <label style={label}>Budget</label>
-                  <select value={brief.budget} onChange={e => setBrief({ ...brief, budget: e.target.value })} style={field} {...h}>
+                  <label style={labelStyle}>Budget</label>
+                  <select value={brief.budget} onChange={e => setBrief({ ...brief, budget: e.target.value })} style={fieldStyle} {...h}>
                     {["Under £2,000","£2,000 – £5,000","£5,000 – £10,000","£10,000 – £20,000","£20,000 – £30,000","£30,000 – £40,000","£40,000 – £50,000","£50,000+","Other"].map(o => <option key={o}>{o}</option>)}
                   </select>
                 </div>
@@ -142,17 +175,21 @@ export default function VenuelyLanding() {
 
               {brief.budget === "Other" && (
                 <div style={{ marginBottom: 12 }}>
-                  <label style={label}>Please specify your budget</label>
-                  <input type="text" placeholder="e.g. £75,000" value={otherBudget} onChange={e => setOtherBudget(e.target.value)} style={field} />
+                  <label style={labelStyle}>Please specify your budget</label>
+                  <input type="text" placeholder="e.g. £75,000" value={otherBudget} onChange={e => setOtherBudget(e.target.value)} style={fieldStyle} />
                 </div>
               )}
 
               <div style={{ marginBottom: 16 }}>
-                <label style={label}>Special requirements or requests</label>
-                <textarea placeholder="Dietary requirements, preferred areas of London, accessibility needs, anything that helps us find the perfect venue..." value={brief.requirements} onChange={e => setBrief({ ...brief, requirements: e.target.value })} style={{ ...field, minHeight: 80, resize: "vertical" }} />
+                <label style={labelStyle}>Special requirements or requests</label>
+                <textarea placeholder="Dietary requirements, preferred areas of London, accessibility needs, anything that helps us find the perfect venue..." value={brief.requirements} onChange={e => setBrief({ ...brief, requirements: e.target.value })} style={{ ...fieldStyle, minHeight: 80, resize: "vertical" }} />
               </div>
 
-              <button onClick={handleSubmit} disabled={submitting} style={{ width: "100%", background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "14px", borderRadius: 6, border: "none", cursor: "none", opacity: submitting ? 0.6 : 1, transition: "opacity 0.2s, transform 0.15s", transform: hovered ? "scale(1.01)" : "scale(1)" }} {...h}>
+              <p style={{ fontSize: 11, color: "#aaa", marginBottom: 10, lineHeight: 1.5 }}>
+                By submitting this form you agree to be contacted by Venuely London regarding your event enquiry.
+              </p>
+
+              <button onClick={handleSubmit} disabled={submitting} style={{ width: "100%", background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "14px", borderRadius: 6, border: "none", cursor: "none", opacity: submitting ? 0.6 : 1, transition: "opacity 0.2s" }} {...h}>
                 {submitting ? "Sending..." : "Send my brief"}
               </button>
             </div>
@@ -160,7 +197,7 @@ export default function VenuelyLanding() {
             <div style={{ textAlign: "center", ...fade(0) }}>
               <div style={{ fontFamily: "Georgia, serif", fontSize: 52, color: "#2c3a1e", marginBottom: "1rem" }}>✓</div>
               <p style={{ fontFamily: "Georgia, serif", fontSize: 26, color: "#2c3a1e", marginBottom: "0.75rem" }}>Brief received.</p>
-              <p style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.8 }}>We'll be in touch at {email}<br />within one working day.</p>
+              <p style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.8 }}>We'll be in touch within one working day.</p>
             </div>
           )}
         </div>
@@ -231,7 +268,7 @@ export default function VenuelyLanding() {
         input:focus, select:focus, textarea:focus { border-color: #8a9e7a !important; box-shadow: 0 0 0 2px rgba(138,158,122,0.15); }
         @media (max-width: 768px) {
           .hero { grid-template-columns: 1fr !important; }
-          nav, .how { padding: 1.5rem !important; }
+          nav { padding: 1.5rem !important; }
           h1 { font-size: 48px !important; }
         }
       `}</style>
