@@ -15,12 +15,18 @@ export default function VenuelyLanding() {
   const [cursor, setCursor] = useState({ x: -100, y: -100 });
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth <= 768);
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100);
     const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleSubmit = async () => {
@@ -65,9 +71,10 @@ export default function VenuelyLanding() {
   const labelStyle = { display: "block", fontSize: 12, color: "#8a9e7a", fontWeight: 500, letterSpacing: "0.3px", marginBottom: 5 };
 
   return (
-    <div style={{ cursor: "none", fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", background: "#f5f0e8", minHeight: "100vh", width: "100%" }}>
+    <div style={{ cursor: isMobile ? "auto" : "none", fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", background: "#f5f0e8", minHeight: "100vh", width: "100%" }}>
 
-      {/* Custom V cursor - visible on all backgrounds */}
+      {/* Custom V cursor - desktop only */}
+      {!isMobile && (
       <div style={{
         position: "fixed",
         top: cursor.y - 24,
@@ -81,30 +88,32 @@ export default function VenuelyLanding() {
           <text x="12" y="28" fontFamily="Georgia, 'Times New Roman', serif" fontSize="32" fontWeight="300" fill="#e8e0d0" textAnchor="middle" stroke="#2c3a1e" strokeWidth="1.5" paintOrder="stroke">V</text>
         </svg>
       </div>
+      )}
 
       {/* Offer banner */}
-      <div style={{ background: "#1e2d1a", padding: "11px 3rem", textAlign: "center" }}>
-        <span style={{ fontSize: 13, color: "#8a9e7a" }}>
+      <div style={{ background: "#1e2d1a", padding: isMobile ? "11px 1.25rem" : "11px 3rem", textAlign: "center" }}>
+        <span style={{ fontSize: isMobile ? 12 : 13, color: "#8a9e7a" }}>
           <span style={{ color: "#e8e0d0", fontWeight: 500 }}>Sign-on offer: </span>
           Booking fees waived for all events confirmed before October 2026
         </span>
       </div>
 
       {/* Nav */}
-      <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
+      <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: isMobile ? "1.25rem 1.25rem" : "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <div style={fade(0)}>
-          <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 38, fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
+          <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: isMobile ? 28 : 38, fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
           <div style={{ fontSize: 8, color: "#8a9e7a", letterSpacing: "4px", textTransform: "uppercase", marginTop: 5 }}>London</div>
         </div>
-        <a href="mailto:hello@venuely.london" style={{ fontSize: 14, color: "#8a9e7a", textDecoration: "none", ...fade(0.2) }} {...h}>
+        <a href="mailto:hello@venuely.london" style={{ fontSize: isMobile ? 12 : 14, color: "#8a9e7a", textDecoration: "none", ...fade(0.2) }} {...h}>
           hello@venuely.london
         </a>
       </nav>
 
       {/* Hero split */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", minHeight: "calc(100vh - 112px)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.2fr 0.8fr", minHeight: isMobile ? "auto" : "calc(100vh - 112px)" }}>
 
-        {/* Left dark panel */}
+        {/* Left dark panel — hidden on mobile (form comes first) */}
+        {!isMobile && (
         <div style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div style={fade(0.2)}>
             <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event specialists</p>
@@ -126,11 +135,23 @@ export default function VenuelyLanding() {
             </div>
           </div>
         </div>
+        )}
 
         {/* Right form panel */}
-        <div style={{ background: "#f0ebe0", padding: "3.5rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflowY: "auto" }}>
+        <div style={{ background: "#f0ebe0", padding: isMobile ? "2.5rem 1.25rem" : "3.5rem 2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", overflowY: "auto" }}>
           {!submitted ? (
             <div style={fade(0.4)}>
+              {isMobile && (
+                <div style={{ marginBottom: "2rem" }}>
+                  <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1rem" }}>Corporate event specialists</p>
+                  <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 42, fontWeight: 300, color: "#2c3a1e", lineHeight: 1.05, letterSpacing: "-1px", marginBottom: "1rem" }}>
+                    Your event.<br />Fully managed.
+                  </h1>
+                  <p style={{ fontSize: 15, color: "#8a9e7a", lineHeight: 1.75, marginBottom: 0 }}>
+                    Tell us what you need. We handle venues, negotiations, contracts, and everything in between.
+                  </p>
+                </div>
+              )}
               <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Get started</p>
               <p style={{ fontFamily: "Georgia, serif", fontSize: 28, color: "#2c3a1e", marginBottom: "1.75rem", fontWeight: 400, lineHeight: 1.2 }}>Tell us about<br />your event</p>
 
@@ -144,7 +165,7 @@ export default function VenuelyLanding() {
                 <input type="text" placeholder="e.g. Acme Ltd" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 10, marginBottom: 12 }}>
                 <div>
                   <label style={labelStyle}>Work email</label>
                   <input type="email" placeholder="your work email" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
@@ -166,7 +187,7 @@ export default function VenuelyLanding() {
                 </select>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 10, marginBottom: 12 }}>
                 <div>
                   <label style={labelStyle}>Number of guests</label>
                   <input type="number" placeholder="e.g. 60" value={brief.guests} onChange={e => setBrief({ ...brief, guests: e.target.value })} style={fieldStyle} />
@@ -210,9 +231,9 @@ export default function VenuelyLanding() {
       </div>
 
       {/* How it works */}
-      <div style={{ padding: "4.5rem 3rem", background: "#f5f0e8" }}>
+      <div style={{ padding: isMobile ? "3rem 1.25rem" : "4.5rem 3rem", background: "#f5f0e8" }}>
         <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "2.5rem" }}>How it works</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "3rem", marginBottom: "4rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? "2rem" : "3rem", marginBottom: "4rem" }}>
           {[
             { num: "01", title: "Send us your brief", desc: "Date, headcount, budget, and the kind of event you have in mind. Takes two minutes." },
             { num: "02", title: "We do the work", desc: "We shortlist venues, negotiate rates, and arrange site visits on your behalf." },
@@ -227,19 +248,19 @@ export default function VenuelyLanding() {
         </div>
 
         {/* Book a meeting */}
-        <div style={{ background: "#2c3a1e", borderRadius: 12, padding: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", flexWrap: "wrap", gap: "1.5rem" }}>
+        <div style={{ background: "#2c3a1e", borderRadius: 12, padding: isMobile ? "2rem 1.5rem" : "3rem", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", marginBottom: "1.5rem", gap: "1.5rem" }}>
           <div>
             <p style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Not sure where to start?</p>
-            <h2 style={{ fontFamily: "Georgia, serif", fontSize: 34, color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a meeting with the team</h2>
+            <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 26 : 34, color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a meeting with the team</h2>
             <p style={{ fontSize: 15, color: "#8a9e7a", maxWidth: 400, lineHeight: 1.8 }}>Book a free 20 minute call with us. We'll listen to what you need and take it from there.</p>
           </div>
-          <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "15px 32px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }} {...h}>
+          <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, padding: "15px 32px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0, alignSelf: isMobile ? "stretch" : "auto", textAlign: isMobile ? "center" : "left" }} {...h}>
             Book a call
           </a>
         </div>
 
         {/* Instagram */}
-        <div style={{ background: "#f0ebe0", borderRadius: 12, padding: "2rem 2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
+        <div style={{ background: "#f0ebe0", borderRadius: 12, padding: isMobile ? "1.5rem" : "2rem 2.5rem", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: "1rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ width: 46, height: 46, background: "#2c3a1e", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8e0d0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -253,14 +274,14 @@ export default function VenuelyLanding() {
               <p style={{ fontSize: 13, color: "#8a9e7a" }}>@venuely.london</p>
             </div>
           </div>
-          <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, padding: "12px 24px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }} {...h}>
+          <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500, padding: "12px 24px", borderRadius: 6, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0, alignSelf: isMobile ? "stretch" : "auto", textAlign: isMobile ? "center" : "left" }} {...h}>
             Follow us
           </a>
         </div>
       </div>
 
       {/* Footer */}
-      <footer style={{ padding: "2rem 3rem", background: "#2c3a1e", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <footer style={{ padding: isMobile ? "1.75rem 1.25rem" : "2rem 3rem", background: "#2c3a1e", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
           <div style={{ fontFamily: "Georgia, serif", fontSize: 24, fontWeight: 300, color: "#e8e0d0" }}>Venuely</div>
           <div style={{ fontSize: 7, color: "#6b8a5a", letterSpacing: "3px", textTransform: "uppercase", marginTop: 3 }}>London</div>
@@ -270,13 +291,10 @@ export default function VenuelyLanding() {
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         input:focus, select:focus, textarea:focus { border-color: #8a9e7a !important; box-shadow: 0 0 0 2px rgba(138,158,122,0.15); }
-        @media (max-width: 768px) {
-          .hero { grid-template-columns: 1fr !important; }
-          nav { padding: 1.5rem !important; }
-          h1 { font-size: 48px !important; }
-        }
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        select { -webkit-appearance: none; appearance: none; }
       `}</style>
     </div>
   );
