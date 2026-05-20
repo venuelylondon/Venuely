@@ -163,7 +163,7 @@ export default function VenuelyLanding() {
   const labelStyle = {
     display: "block",
     fontSize: 13,
-    color: "#8a9e7a",
+    color: "#5e7150",
     fontWeight: 500,
     letterSpacing: "0.3px",
     marginBottom: 5,
@@ -219,7 +219,7 @@ export default function VenuelyLanding() {
 
       {/* Announcement banner */}
       <div className="vly-banner" style={{ background: "#1e2d1a", textAlign: "center" }}>
-        <span style={{ fontSize: 14, color: "#8a9e7a" }}>
+        <span style={{ fontSize: 14, color: "#5e7150" }}>
           <span style={{ color: "#e8e0d0", fontWeight: 500 }}>Now open: </span>
           Accepting new clients for summer and autumn 2026 events
         </span>
@@ -229,7 +229,7 @@ export default function VenuelyLanding() {
       <nav className="vly-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <Link to="/" style={{ ...fade(0), textDecoration: "none" }}>
           <div className="vly-logo" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
-          <div style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+          <div style={{ fontSize: 11, color: "#4f6a3f", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
         </Link>
         <div className="vly-nav-right" style={{ display: "flex", alignItems: "center", gap: "2rem", ...fade(0.2) }}>
           <div className="vly-nav-links" style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
@@ -251,8 +251,8 @@ export default function VenuelyLanding() {
       {/* Trust bar */}
       <div className="vly-trust-bar" style={{ background: "#f0ebe0", borderBottom: "1px solid #e0d8c8", display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
         {["Free service — no fees, ever", "London specialists", "Response within 24 hours"].map((item, i) => (
-          <span key={i} style={{ color: "#8a9e7a", display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ color: "#6b8a5a" }}>✓</span>
+          <span key={i} style={{ color: "#5e7150", display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{ color: "#4f6a3f" }}>✓</span>
             {item}
           </span>
         ))}
@@ -290,24 +290,24 @@ export default function VenuelyLanding() {
             <div style={fade(0.4)}>
               {/* Mobile-only hero copy */}
               <div className="vly-mobile-hero" style={{ marginBottom: "2rem" }}>
-                <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1rem" }}>Corporate event concierge · London</p>
+                <p style={{ fontSize: 12, color: "#4f6a3f", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1rem" }}>Corporate event concierge · London</p>
                 <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 38, fontWeight: 300, color: "#2c3a1e", lineHeight: 1.05, letterSpacing: "-1px", marginBottom: "1rem" }}>
                   Brief us once.<br />We handle<br />everything.
                 </h1>
-                <p style={{ fontSize: 16, color: "#8a9e7a", lineHeight: 1.75, marginBottom: "1.25rem" }}>
+                <p style={{ fontSize: 16, color: "#5e7150", lineHeight: 1.75, marginBottom: "1.25rem" }}>
                   Venuely is a fully managed corporate event concierge for PAs and EAs. Free to use. Every brief answered within 24 hours.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
                   {["Free service — no fees, ever", "Response within 24 hours, guaranteed", "Venues, contracts and payment handled for you"].map((b, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                      <span style={{ color: "#6b8a5a", fontSize: 14, marginTop: 1 }}>✓</span>
-                      <span style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.5 }}>{b}</span>
+                      <span style={{ color: "#4f6a3f", fontSize: 14, marginTop: 1 }}>✓</span>
+                      <span style={{ fontSize: 14, color: "#5e7150", lineHeight: 1.5 }}>{b}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.6rem" }}>Submit your brief</p>
+              <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.6rem" }}>Submit your brief</p>
               <p style={{ fontFamily: "Georgia, serif", fontSize: 26, color: "#2c3a1e", marginBottom: "1.5rem", fontWeight: 400, lineHeight: 1.2 }}>Tell us about<br />your event</p>
 
               {/* Name */}
@@ -404,7 +404,7 @@ export default function VenuelyLanding() {
               </div>
 
               {/* Consent */}
-              <p style={{ fontSize: 12, color: "#9a9a8a", marginBottom: 10, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 12, color: "#6f6e5c", marginBottom: 10, lineHeight: 1.6 }}>
                 By submitting this brief you agree to be contacted by Venuely London regarding your event enquiry.
               </p>
 
@@ -419,7 +419,7 @@ export default function VenuelyLanding() {
               </button>
 
               {/* Reassurance */}
-              <p style={{ fontSize: 13, color: "#8a9e7a", marginTop: 10, lineHeight: 1.6, textAlign: "center" }}>
+              <p style={{ fontSize: 13, color: "#5e7150", marginTop: 10, lineHeight: 1.6, textAlign: "center" }}>
                 We'll review your brief and be in touch within 24 hours. No spam, ever.
               </p>
             </div>
@@ -431,7 +431,7 @@ export default function VenuelyLanding() {
                 </svg>
               </div>
               <p style={{ fontFamily: "Georgia, serif", fontSize: 26, color: "#2c3a1e", marginBottom: "0.75rem", fontWeight: 300 }}>Brief received.</p>
-              <p style={{ fontSize: 15, color: "#8a9e7a", lineHeight: 1.8, maxWidth: 280, margin: "0 auto" }}>Thank you — we'll review your brief and be in touch within 24 hours.</p>
+              <p style={{ fontSize: 15, color: "#5e7150", lineHeight: 1.8, maxWidth: 280, margin: "0 auto" }}>Thank you — we'll review your brief and be in touch within 24 hours.</p>
             </div>
           )}
         </div>
@@ -439,7 +439,7 @@ export default function VenuelyLanding() {
 
       {/* How it works + sections below hero */}
       <div className="vly-how" style={{ background: "#f5f0e8" }}>
-        <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>How it works</p>
+        <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>How it works</p>
         <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "3rem" }} className="vly-section-heading">Three steps, no hassle.</h2>
 
         <div className="vly-steps" style={{ marginBottom: "3rem" }}>
@@ -463,14 +463,14 @@ export default function VenuelyLanding() {
             <div key={step.num} style={{ borderTop: "1px solid #d4c9b5", paddingTop: "1.5rem" }} {...h}>
               <div style={{ fontFamily: "Georgia, serif", fontSize: 52, fontWeight: 300, color: "#d4c9b5", lineHeight: 1, marginBottom: "0.75rem" }}>{step.num}</div>
               <div style={{ fontSize: 17, fontWeight: 600, color: "#2c3a1e", marginBottom: "0.5rem" }}>{step.title}</div>
-              <div style={{ fontSize: 15, color: "#8a9e7a", lineHeight: 1.8 }}>{step.desc}</div>
+              <div style={{ fontSize: 15, color: "#5e7150", lineHeight: 1.8 }}>{step.desc}</div>
             </div>
           ))}
         </div>
 
         {/* Video showcase section */}
         <div className="vly-video-section" style={{ marginBottom: "3rem" }}>
-          <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem", textAlign: "center" }}>A glimpse of what we do</p>
+          <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem", textAlign: "center" }}>A glimpse of what we do</p>
           <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "2rem", textAlign: "center" }} className="vly-section-heading">London, at its finest.</h2>
           <div className="vly-video-frame" style={{ position: "relative", margin: "0 auto", borderRadius: 12, overflow: "hidden", border: "1px solid #e0d8c8", background: "#2c3a1e", maxWidth: 560 }}>
             <video
@@ -489,7 +489,7 @@ export default function VenuelyLanding() {
 
         {/* What to expect timeline */}
         <div style={{ background: "#f0ebe0", borderRadius: 12, border: "1px solid #e0d8c8", marginBottom: "3rem" }} className="vly-timeline-card">
-          <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.5rem" }}>What to expect after you submit</p>
+          <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.5rem" }}>What to expect after you submit</p>
           <div className="vly-timeline-grid">
             {[
               { time: "Within 24 hrs", desc: "We review your brief and confirm receipt with a personal response" },
@@ -499,7 +499,7 @@ export default function VenuelyLanding() {
             ].map((item, i) => (
               <div key={i}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: "#2c3a1e", marginBottom: 6, paddingBottom: 6, borderBottom: "2px solid #d4c9b5" }}>{item.time}</div>
-                <div style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.7 }}>{item.desc}</div>
+                <div style={{ fontSize: 14, color: "#5e7150", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -507,7 +507,7 @@ export default function VenuelyLanding() {
 
         {/* Why Venuely */}
         <div style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "3rem" }} className="vly-why-card">
-          <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Why choose Venuely</p>
+          <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Why choose Venuely</p>
           <h2 style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, lineHeight: 1.2, marginBottom: "2rem" }} className="vly-section-heading">Why PAs and EAs choose Venuely</h2>
 
           {/* Proof point bar */}
@@ -546,9 +546,9 @@ export default function VenuelyLanding() {
 
         {/* FAQ Section */}
         <div className="vly-faq-section" style={{ marginBottom: "3rem" }}>
-          <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
+          <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
           <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "0.5rem" }} className="vly-section-heading">Frequently asked questions</h2>
-          <p style={{ fontSize: 16, color: "#8a9e7a", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
+          <p style={{ fontSize: 16, color: "#5e7150", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
           <div style={{ borderTop: "1px solid #d4c9b5" }}>
             {faqs.map((item, i) => (
               <div key={i} style={{ borderBottom: "1px solid #d4c9b5" }}>
@@ -583,7 +583,7 @@ export default function VenuelyLanding() {
                   </svg>
                 </button>
                 {openFaq === i && (
-                  <div style={{ paddingBottom: "1.25rem", color: "#8a9e7a", lineHeight: 1.8, fontSize: 16 }}>
+                  <div style={{ paddingBottom: "1.25rem", color: "#5e7150", lineHeight: 1.8, fontSize: 16 }}>
                     {item.a}
                   </div>
                 )}
@@ -594,7 +594,7 @@ export default function VenuelyLanding() {
 
         {/* Book a call CTA */}
         <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem", textAlign: "center" }}>
-          <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
+          <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
           <h2 className="vly-cta-heading" style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a free 20-minute call</h2>
           <p style={{ fontSize: 16, color: "#8a9e7a", maxWidth: 480, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Not sure where to start? Talk to someone who knows London's venue scene inside out. We'll help you shape your brief and find the right fit — no pressure, no obligation.</p>
           <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" className="vly-cta-btn" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, borderRadius: 6, textDecoration: "none" }} {...h}>
@@ -628,7 +628,7 @@ export default function VenuelyLanding() {
         {/* Logo lockup */}
         <div className="vly-footer-logo" style={{ display: "inline-block", textAlign: "center" }}>
           <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 30, fontWeight: 300, color: "#e8e0d0", lineHeight: 1, letterSpacing: "-0.5px" }}>Venuely</div>
-          <div style={{ fontSize: 11, color: "#a8bc98", letterSpacing: "6px", textTransform: "uppercase", marginTop: 6, paddingLeft: 6 }}>London</div>
+          <div style={{ fontSize: 12, color: "#a8bc98", letterSpacing: "6px", textTransform: "uppercase", marginTop: 6, paddingLeft: 6 }}>London</div>
         </div>
 
         <p style={{ fontSize: 15, color: "#8a9e7a", marginTop: "1.25rem", lineHeight: 1.7, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>

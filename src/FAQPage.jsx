@@ -55,7 +55,7 @@ export default function FAQPage() {
       <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <Link to="/" style={{ textDecoration: "none" }}>
           <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1, fontSize: 30 }}>Venuely</div>
-          <div style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+          <div style={{ fontSize: 11, color: "#4f6a3f", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
         </Link>
         <Link to="/" style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500, fontSize: 15, padding: "10px 20px" }}>
           ← Back to home
@@ -63,9 +63,9 @@ export default function FAQPage() {
       </nav>
 
       <div className="vly-page" style={{ maxWidth: 760, margin: "0 auto" }}>
-        <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
+        <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
         <h1 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "0.5rem", fontSize: 40 }}>Frequently asked questions</h1>
-        <p style={{ fontSize: 17, color: "#8a9e7a", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
+        <p style={{ fontSize: 17, color: "#5e7150", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
 
         <div style={{ borderTop: "1px solid #d4c9b5" }}>
           {faqs.map((item, i) => (
@@ -101,7 +101,7 @@ export default function FAQPage() {
                 </svg>
               </button>
               {openFaq === i && (
-                <div style={{ paddingBottom: "1.25rem", color: "#8a9e7a", lineHeight: 1.8, fontSize: 16 }}>
+                <div style={{ paddingBottom: "1.25rem", color: "#5e7150", lineHeight: 1.8, fontSize: 16 }}>
                   {item.a}
                 </div>
               )}

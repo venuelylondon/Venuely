@@ -47,7 +47,7 @@ export default function HowItWorksPage() {
       <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <Link to="/" style={{ textDecoration: "none" }}>
           <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1, fontSize: 30 }}>Venuely</div>
-          <div style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+          <div style={{ fontSize: 11, color: "#4f6a3f", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
         </Link>
         <Link to="/" style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500, fontSize: 15, padding: "10px 20px" }}>
           ← Back to home
@@ -55,28 +55,28 @@ export default function HowItWorksPage() {
       </nav>
 
       <div className="vly-page" style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>How it works</p>
+        <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>How it works</p>
         <h1 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "0.5rem", fontSize: 40 }}>Three steps, no hassle.</h1>
-        <p style={{ fontSize: 17, color: "#8a9e7a", marginBottom: "3rem" }}>From brief to booked — here's exactly how we take the work off your plate.</p>
+        <p style={{ fontSize: 17, color: "#5e7150", marginBottom: "3rem" }}>From brief to booked — here's exactly how we take the work off your plate.</p>
 
         <div className="vly-hiw-steps">
           {steps.map((step) => (
             <div key={step.num} style={{ borderTop: "1px solid #d4c9b5", paddingTop: "1.5rem" }}>
               <div style={{ fontFamily: "Georgia, serif", fontSize: 52, fontWeight: 300, color: "#d4c9b5", lineHeight: 1, marginBottom: "0.75rem" }}>{step.num}</div>
               <div style={{ fontSize: 17, fontWeight: 600, color: "#2c3a1e", marginBottom: "0.5rem" }}>{step.title}</div>
-              <div style={{ fontSize: 15, color: "#8a9e7a", lineHeight: 1.8 }}>{step.desc}</div>
+              <div style={{ fontSize: 15, color: "#5e7150", lineHeight: 1.8 }}>{step.desc}</div>
             </div>
           ))}
         </div>
 
         {/* Timeline */}
         <div style={{ background: "#f0ebe0", borderRadius: 12, border: "1px solid #e0d8c8", padding: "2.5rem 3rem", marginBottom: "3.5rem" }}>
-          <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.5rem" }}>What to expect after you submit</p>
+          <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.5rem" }}>What to expect after you submit</p>
           <div className="vly-hiw-timeline">
             {timeline.map((item, i) => (
               <div key={i}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: "#2c3a1e", marginBottom: 6, paddingBottom: 6, borderBottom: "2px solid #d4c9b5" }}>{item.time}</div>
-                <div style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.7 }}>{item.desc}</div>
+                <div style={{ fontSize: 14, color: "#5e7150", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>

@@ -167,7 +167,7 @@ function PostList({ onSelect }) {
             onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)'}
             onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
           >
-            <div style={{ display: 'flex', gap: 12, marginBottom: '0.75rem', color: '#9CA3AF', fontSize: 14 }}>
+            <div style={{ display: 'flex', gap: 12, marginBottom: '0.75rem', color: '#6B7280', fontSize: 14 }}>
               <span>{post.date}</span>
               <span>·</span>
               <span>{post.readTime}</span>
@@ -232,7 +232,7 @@ function PostDetail({ slug, onBack }) {
       >
         ← Back to blog
       </button>
-      <div style={{ display: 'flex', gap: 12, color: '#9CA3AF', fontSize: 14, marginBottom: '1rem' }}>
+      <div style={{ display: 'flex', gap: 12, color: '#6B7280', fontSize: 14, marginBottom: '1rem' }}>
         <span>{post.date}</span><span>·</span><span>{post.readTime}</span>
       </div>
       <h1 style={{ fontSize: 32, fontWeight: 700, color: '#111827', lineHeight: 1.3, marginBottom: '1.5rem' }}>{post.title}</h1>
