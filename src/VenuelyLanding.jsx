@@ -227,18 +227,25 @@ export default function VenuelyLanding() {
 
       {/* Nav */}
       <nav className="vly-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
-        <div style={fade(0)}>
+        <Link to="/" style={{ ...fade(0), textDecoration: "none" }}>
           <div className="vly-logo" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
           <div style={{ fontSize: 9, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+        </Link>
+        <div className="vly-nav-right" style={{ display: "flex", alignItems: "center", gap: "2rem", ...fade(0.2) }}>
+          <div className="vly-nav-links" style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
+            <Link to="/how-it-works" className="vly-nav-link" style={{ fontSize: 14, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>How it works</Link>
+            <Link to="/faq" className="vly-nav-link" style={{ fontSize: 14, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>FAQ</Link>
+            <Link to="/blog" className="vly-nav-link" style={{ fontSize: 14, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>Blog</Link>
+          </div>
+          <a
+            href="#brief-form"
+            className="vly-nav-cta"
+            style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500 }}
+            {...h}
+          >
+            Send a brief →
+          </a>
         </div>
-        <a
-          href="#brief-form"
-          className="vly-nav-cta"
-          style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500, ...fade(0.2) }}
-          {...h}
-        >
-          Send a brief →
-        </a>
       </nav>
 
       {/* Trust bar */}
@@ -634,6 +641,8 @@ export default function VenuelyLanding() {
 
         {/* Nav links */}
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.5rem", flexWrap: "wrap", marginTop: "1.75rem" }}>
+          <Link to="/how-it-works" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>How it works</Link>
+          <Link to="/faq" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>FAQ</Link>
           <Link to="/blog" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Blog</Link>
           <Link to="/privacy" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Privacy Policy</Link>
           <Link to="/terms" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Terms of Service</Link>
@@ -678,6 +687,8 @@ export default function VenuelyLanding() {
         .vly-nav { padding: 1.75rem 3rem; }
         .vly-logo { font-size: 38px; }
         .vly-nav-cta { font-size: 14px; padding: 10px 20px; }
+        .vly-nav-link { transition: opacity 0.2s ease; }
+        .vly-nav-link:hover { opacity: 0.65; }
 
         /* ── Trust bar ── */
         .vly-trust-bar { padding: 10px 3rem; gap: 2.5rem; }
@@ -782,6 +793,8 @@ export default function VenuelyLanding() {
           .vly-nav { padding: 1rem 1.25rem; }
           .vly-logo { font-size: 26px; }
           .vly-nav-cta { font-size: 12px; padding: 8px 14px; }
+          .vly-nav-links { display: none !important; }
+          .vly-nav-right { gap: 0 !important; }
 
           .vly-trust-bar { padding: 10px 1.25rem; gap: 0.75rem; }
           .vly-trust-bar span { font-size: 11px; }
