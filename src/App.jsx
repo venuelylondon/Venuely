@@ -5,6 +5,7 @@ import BlogPage from './BlogPage'
 import FAQPage from './FAQPage'
 import HowItWorksPage from './HowItWorksPage'
 import PartnersPage from './PartnersPage'
+import WhatWeDoPage from './WhatWeDoPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/how-it-works" element={<HowItWorksPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/partners" element={<PartnersPage />} />
+      <Route path="/what-we-do" element={<WhatWeDoPage />} />
     </Routes>
   )
 }
