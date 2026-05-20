@@ -439,6 +439,16 @@ export default function VenuelyLanding() {
 
       {/* How it works + sections below hero */}
       <div className="vly-how" style={{ background: "#f5f0e8" }}>
+        {/* Book a call CTA */}
+        <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem", textAlign: "center" }}>
+          <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
+          <h2 className="vly-cta-heading" style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a free 20-minute call</h2>
+          <p style={{ fontSize: 16, color: "#8a9e7a", maxWidth: 480, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Not sure where to start? Talk to someone who knows London's venue scene inside out. We'll help you shape your brief and find the right fit — no pressure, no obligation.</p>
+          <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" className="vly-cta-btn" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, borderRadius: 6, textDecoration: "none" }} {...h}>
+            Book a free call →
+          </a>
+        </div>
+
         <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>How it works</p>
         <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "3rem" }} className="vly-section-heading">Three steps, no hassle.</h2>
 
@@ -592,13 +602,21 @@ export default function VenuelyLanding() {
           </div>
         </div>
 
-        {/* Book a call CTA */}
-        <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem", textAlign: "center" }}>
-          <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
-          <h2 className="vly-cta-heading" style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a free 20-minute call</h2>
-          <p style={{ fontSize: 16, color: "#8a9e7a", maxWidth: 480, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Not sure where to start? Talk to someone who knows London's venue scene inside out. We'll help you shape your brief and find the right fit — no pressure, no obligation.</p>
-          <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" className="vly-cta-btn" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, borderRadius: 6, textDecoration: "none" }} {...h}>
-            Book a free call →
+        {/* YouTube */}
+        <div className="vly-ig-card" style={{ background: "#f0ebe0", borderRadius: 12, marginBottom: "1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 46, height: 46, background: "#2c3a1e", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8e0d0">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>
+              </svg>
+            </div>
+            <div>
+              <p style={{ fontSize: 17, fontWeight: 500, color: "#2c3a1e", marginBottom: 4 }}>Subscribe on YouTube</p>
+              <p style={{ fontSize: 14, color: "#5e7150" }}>Venuely London — venue tours, event films, and behind the scenes</p>
+            </div>
+          </div>
+          <a href="https://www.youtube.com/@venuelylondon" target="_blank" rel="noreferrer" className="vly-ig-btn" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, borderRadius: 6, textDecoration: "none" }} {...h}>
+            Subscribe →
           </a>
         </div>
 
