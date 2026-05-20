@@ -229,7 +229,7 @@ export default function VenuelyLanding() {
       <nav className="vly-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <div style={fade(0)}>
           <div className="vly-logo" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
-          <div style={{ fontSize: 8, color: "#8a9e7a", letterSpacing: "4px", textTransform: "uppercase", marginTop: 5 }}>London</div>
+          <div style={{ fontSize: 9, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
         </div>
         <a
           href="#brief-form"
@@ -586,12 +586,10 @@ export default function VenuelyLanding() {
         </div>
 
         {/* Book a call CTA */}
-        <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem" }}>
-          <div>
-            <p style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
-            <h2 className="vly-cta-heading" style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a free 20-minute call</h2>
-            <p style={{ fontSize: 15, color: "#8a9e7a", maxWidth: 400, lineHeight: 1.8 }}>Not sure where to start? Talk to someone who knows London's venue scene inside out. We'll help you shape your brief and find the right fit — no pressure, no obligation.</p>
-          </div>
+        <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem", textAlign: "center" }}>
+          <p style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
+          <h2 className="vly-cta-heading" style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2 }}>Book a free 20-minute call</h2>
+          <p style={{ fontSize: 15, color: "#8a9e7a", maxWidth: 480, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Not sure where to start? Talk to someone who knows London's venue scene inside out. We'll help you shape your brief and find the right fit — no pressure, no obligation.</p>
           <a href="mailto:hello@venuely.london?subject=Book a call with Venuely" className="vly-cta-btn" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600, borderRadius: 6, textDecoration: "none" }} {...h}>
             Book a free call →
           </a>
@@ -619,24 +617,37 @@ export default function VenuelyLanding() {
       </div>
 
       {/* Footer */}
-      <footer className="vly-footer" style={{ background: "#2c3a1e" }}>
-        <div className="vly-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1.5rem", paddingBottom: "1.5rem", borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: "1.25rem" }}>
-          <div>
-            <div style={{ fontFamily: "Georgia, serif", fontSize: 24, fontWeight: 300, color: "#e8e0d0" }}>Venuely</div>
-            <div style={{ fontSize: 7, color: "#6b8a5a", letterSpacing: "3px", textTransform: "uppercase", marginTop: 3 }}>London</div>
-            <p style={{ fontSize: 13, color: "#8a9e7a", marginTop: 10, lineHeight: 1.6 }}>Corporate event concierge for PAs and EAs.</p>
-          </div>
-          <a href="mailto:hello@venuely.london" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none" }} {...h}>hello@venuely.london</a>
+      <footer className="vly-footer" style={{ background: "#2c3a1e", textAlign: "center" }}>
+        {/* Logo lockup */}
+        <div className="vly-footer-logo" style={{ display: "inline-block", textAlign: "center" }}>
+          <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 30, fontWeight: 300, color: "#e8e0d0", lineHeight: 1, letterSpacing: "-0.5px" }}>Venuely</div>
+          <div style={{ fontSize: 10, color: "#a8bc98", letterSpacing: "6px", textTransform: "uppercase", marginTop: 6, paddingLeft: 6 }}>London</div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", alignItems: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
-            <span style={{ fontSize: 12, color: "#6b8a5a" }}>© {new Date().getFullYear()} Venuely London. All rights reserved.</span>
-            <span style={{ fontSize: 12, color: "#6b8a5a" }}>·</span>
-            <Link to="/privacy" style={{ fontSize: 12, color: "#6b8a5a", textDecoration: "none" }}>Privacy Policy</Link>
-            <span style={{ fontSize: 12, color: "#6b8a5a" }}>·</span>
-            <Link to="/terms" style={{ fontSize: 12, color: "#6b8a5a", textDecoration: "none" }}>Terms of Service</Link>
-          </div>
-          <span style={{ fontSize: 12, color: "#6b8a5a" }}>Free venue finding service · London</span>
+
+        <p style={{ fontSize: 14, color: "#8a9e7a", marginTop: "1.25rem", lineHeight: 1.7, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>
+          Corporate event concierge for PAs and EAs in London.
+        </p>
+
+        <a href="mailto:hello@venuely.london" style={{ display: "inline-block", marginTop: "1.25rem", fontSize: 15, fontWeight: 500, color: "#e8e0d0", textDecoration: "none", borderBottom: "1px solid rgba(168,188,152,0.4)", paddingBottom: 2 }} {...h}>
+          hello@venuely.london
+        </a>
+
+        {/* Nav links */}
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.5rem", flexWrap: "wrap", marginTop: "1.75rem" }}>
+          <Link to="/blog" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Blog</Link>
+          <Link to="/privacy" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Privacy Policy</Link>
+          <Link to="/terms" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Terms of Service</Link>
+          <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" style={{ fontSize: 13, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Instagram</a>
+        </div>
+
+        {/* Divider */}
+        <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.12)", margin: "2rem auto 1.5rem" }} />
+
+        {/* Bottom line */}
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+          <span style={{ fontSize: 12, color: "#6b8a5a" }}>© {new Date().getFullYear()} Venuely London. All rights reserved.</span>
+          <span style={{ fontSize: 12, color: "#4f6a3f" }}>·</span>
+          <span style={{ fontSize: 12, color: "#6b8a5a" }}>Free venue finding service</span>
         </div>
       </footer>
 
@@ -728,12 +739,8 @@ export default function VenuelyLanding() {
 
         /* ── CTA card ── */
         .vly-cta-card {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding: 3rem;
-          gap: 1.5rem;
+          display: block;
+          padding: 3.5rem 3rem;
         }
         .vly-cta-heading { font-size: 32px; }
         .vly-cta-btn {
@@ -800,9 +807,7 @@ export default function VenuelyLanding() {
           .vly-why-grid { grid-template-columns: 1fr; }
 
           .vly-cta-card {
-            flex-direction: column;
-            padding: 2rem 1.25rem;
-            align-items: flex-start;
+            padding: 2.5rem 1.25rem;
           }
           .vly-cta-heading { font-size: 24px; }
           .vly-cta-btn { width: 100%; text-align: center; padding: 14px; }
