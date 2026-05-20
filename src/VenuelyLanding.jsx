@@ -227,9 +227,9 @@ export default function VenuelyLanding() {
 
       {/* Nav */}
       <nav className="vly-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
-        <Link to="/" style={{ ...fade(0), textDecoration: "none" }}>
+        <Link to="/" style={{ ...fade(0), textDecoration: "none", display: "inline-block", textAlign: "center" }}>
           <div className="vly-logo" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
-          <div style={{ fontSize: 11, color: "#4f6a3f", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+          <div style={{ fontSize: 13, color: "#4f6a3f", letterSpacing: "7px", textTransform: "uppercase", marginTop: 6, paddingLeft: 7 }}>London</div>
         </Link>
         <div className="vly-nav-right" style={{ display: "flex", alignItems: "center", gap: "2rem", ...fade(0.2) }}>
           <div className="vly-nav-links" style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
