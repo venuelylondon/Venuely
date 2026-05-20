@@ -205,9 +205,7 @@ export default function VenuelyLanding() {
         <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
           {/* Video background */}
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden", zIndex: 0 }}>
-            <video ref={videoRef} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}>
-              <source src="/venuely_promo.mp4" type="video/mp4" />
-            </video>
+            <video ref={videoRef} src="/venuely_promo.mp4" autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }} />
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(15,22,8,0.70) 0%, rgba(15,22,8,0.65) 40%, rgba(15,22,8,0.82) 75%, rgba(15,22,8,0.95) 100%)" }} />
           </div>
           <div style={{ ...fade(0.2), position: "relative", zIndex: 1 }}>
