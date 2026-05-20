@@ -236,6 +236,7 @@ export default function VenuelyLanding() {
             <a href="#how-it-works" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>How it works</a>
             <a href="#faq" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>FAQ</a>
             <a href="#why-us" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>What we do</a>
+            <Link to="/partners" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>Partners</Link>
           </div>
           <a
             href="#brief-form"
@@ -681,6 +682,7 @@ export default function VenuelyLanding() {
           <Link to="/how-it-works" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>How it works</Link>
           <Link to="/faq" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>FAQ</Link>
           <Link to="/blog" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Blog</Link>
+          <Link to="/partners" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Partners</Link>
           <Link to="/privacy" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Privacy Policy</Link>
           <Link to="/terms" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Terms of Service</Link>
           <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" style={{ fontSize: 14, color: "#a8bc98", textDecoration: "none", fontWeight: 500 }} {...h}>Instagram</a>
