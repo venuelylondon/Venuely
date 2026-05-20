@@ -255,14 +255,9 @@ export default function VenuelyLanding() {
       <div className="vly-hero">
 
         {/* Left dark panel - desktop only */}
-        <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
-          {/* Video background */}
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden", zIndex: 0 }}>
-            <video ref={videoRef} src="/venuely_promo.mp4" autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }} />
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(15,22,8,0.70) 0%, rgba(15,22,8,0.65) 40%, rgba(15,22,8,0.82) 75%, rgba(15,22,8,0.95) 100%)" }} />
-          </div>
-          <div style={{ ...fade(0.2), position: "relative", zIndex: 1 }}>
-            <p style={{ fontSize: 11, color: "#c8d4b8", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
+        <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div style={fade(0.2)}>
+            <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
             <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 66, fontWeight: 300, color: "#e8e0d0", lineHeight: 1.02, letterSpacing: "-1.5px", marginBottom: "1.75rem" }}>
               Brief us once.<br />We handle<br />everything.
             </h1>
@@ -464,6 +459,25 @@ export default function VenuelyLanding() {
               <div style={{ fontSize: 14, color: "#8a9e7a", lineHeight: 1.8 }}>{step.desc}</div>
             </div>
           ))}
+        </div>
+
+        {/* Video showcase section */}
+        <div className="vly-video-section" style={{ marginBottom: "3rem" }}>
+          <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem", textAlign: "center" }}>A glimpse of what we do</p>
+          <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "2rem", textAlign: "center" }} className="vly-section-heading">London, at its finest.</h2>
+          <div className="vly-video-frame" style={{ position: "relative", margin: "0 auto", borderRadius: 12, overflow: "hidden", border: "1px solid #e0d8c8", background: "#2c3a1e", maxWidth: 560 }}>
+            <video
+              ref={videoRef}
+              src="/venuely_promo.mp4"
+              poster="/venuely_promo_poster.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              style={{ display: "block", width: "100%", height: "auto", objectFit: "cover" }}
+            />
+          </div>
         </div>
 
         {/* What to expect timeline */}
@@ -707,6 +721,10 @@ export default function VenuelyLanding() {
 
         /* ── FAQ section ── */
         .vly-faq-section { max-width: 100%; }
+
+        /* ── Video showcase section ── */
+        .vly-video-section { max-width: 100%; }
+        .vly-video-frame { box-shadow: 0 8px 32px rgba(44,58,30,0.12); }
 
         /* ── CTA card ── */
         .vly-cta-card {
