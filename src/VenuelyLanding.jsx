@@ -229,7 +229,7 @@ export default function VenuelyLanding() {
       <nav className="vly-nav" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <Link to="/" style={{ ...fade(0), textDecoration: "none", display: "inline-block", textAlign: "center" }}>
           <div className="vly-logo" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1 }}>Venuely</div>
-          <div style={{ fontSize: 13, color: "#4f6a3f", letterSpacing: "7px", textTransform: "uppercase", marginTop: 6, paddingLeft: 7 }}>London</div>
+          <div style={{ fontSize: 15, color: "#4f6a3f", letterSpacing: "8px", textTransform: "uppercase", marginTop: 7, paddingLeft: 8 }}>London</div>
         </Link>
         <div className="vly-nav-right" style={{ display: "flex", alignItems: "center", gap: "2rem", ...fade(0.2) }}>
           <div className="vly-nav-links" style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
@@ -685,7 +685,7 @@ export default function VenuelyLanding() {
 
         /* ── Nav ── */
         .vly-nav { padding: 1.75rem 3rem; }
-        .vly-logo { font-size: 38px; }
+        .vly-logo { font-size: 46px; }
         .vly-nav-cta { font-size: 15px; padding: 10px 20px; }
         .vly-nav-link { transition: opacity 0.2s ease; }
         .vly-nav-link:hover { opacity: 0.65; }
@@ -791,7 +791,7 @@ export default function VenuelyLanding() {
           .vly-banner { padding: 10px 1.25rem; font-size: 13px; }
 
           .vly-nav { padding: 1rem 1.25rem; }
-          .vly-logo { font-size: 26px; }
+          .vly-logo { font-size: 32px; }
           .vly-nav-cta { font-size: 13px; padding: 8px 14px; }
           .vly-nav-links { display: none !important; }
           .vly-nav-right { gap: 0 !important; }
