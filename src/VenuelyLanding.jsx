@@ -203,17 +203,17 @@ export default function VenuelyLanding() {
         <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
           {/* Video background */}
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden", zIndex: 0 }}>
-            <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+            <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}>
               <source src="/venuely_promo.mp4" type="video/mp4" />
             </video>
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(30,41,21,0.35) 0%, rgba(30,41,21,0.60) 50%, rgba(30,41,21,0.85) 100%)" }} />
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(20,30,12,0.55) 0%, rgba(20,30,12,0.72) 50%, rgba(20,30,12,0.90) 100%)" }} />
           </div>
           <div style={{ ...fade(0.2), position: "relative", zIndex: 1 }}>
             <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
             <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 66, fontWeight: 300, color: "#e8e0d0", lineHeight: 1.02, letterSpacing: "-1.5px", marginBottom: "1.75rem" }}>
               Brief us once.<br />We handle<br />everything.
             </h1>
-            <p style={{ fontSize: 16, color: "#8a9e7a", lineHeight: 1.85, maxWidth: 400, marginBottom: "2.5rem" }}>
+            <p style={{ fontSize: 16, color: "#c8d4b8", lineHeight: 1.85, maxWidth: 400, marginBottom: "2.5rem" }}>
               Venuely is a fully managed corporate event concierge for PAs and EAs in London. Tell us what you need — we take it from there. Venues, negotiation, contracts, site visits and payment. Completely free to use.
             </p>
           </div>
@@ -221,8 +221,8 @@ export default function VenuelyLanding() {
             <div style={{ columns: 2, columnGap: "2.5rem" }}>
               {bullets.map(item => (
                 <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10, breakInside: "avoid" }}>
-                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#6b8a5a", flexShrink: 0, marginTop: 7 }} />
-                  <span style={{ fontSize: 13, color: "#6b8a5a", lineHeight: 1.6 }}>{item}</span>
+                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#b0c49e", flexShrink: 0, marginTop: 7 }} />
+                  <span style={{ fontSize: 13, color: "#b0c49e", lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
             </div>
