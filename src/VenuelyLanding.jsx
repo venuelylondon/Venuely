@@ -671,4 +671,24 @@ export default function VenuelyLanding() {
           .vly-why-grid { grid-template-columns: 1fr; }
 
           .vly-cta-card {
-            flex-d
+            flex-direction: column;
+                padding: 2rem 1.25rem;
+                    align-items: flex-start;
+                      }
+                        .vly-cta-heading { font-size: 24px; }
+                          .vly-cta-btn { width: 100%; text-align: center; padding: 14px; }
+
+                            .vly-ig-card {
+                                flex-direction: column;
+                                    align-items: flex-start;
+                                        padding: 1.5rem 1.25rem;
+                                          }
+                                            .vly-ig-btn { width: 100%; text-align: center; padding: 12px; }
+
+                                              .vly-footer { padding: 2rem 1.25rem; }
+                                              }
+                                              `}
+                                                    </style>
+                                                        </div>
+                                                          );
+                                                          }
