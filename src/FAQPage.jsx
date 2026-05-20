@@ -55,17 +55,17 @@ export default function FAQPage() {
       <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.75rem 3rem", background: "#f5f0e8", borderBottom: "1px solid #e0d8c8" }}>
         <Link to="/" style={{ textDecoration: "none" }}>
           <div style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 300, color: "#2c3a1e", letterSpacing: "-0.5px", lineHeight: 1, fontSize: 30 }}>Venuely</div>
-          <div style={{ fontSize: 9, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
+          <div style={{ fontSize: 10, color: "#6b8a5a", letterSpacing: "5px", textTransform: "uppercase", marginTop: 5, paddingLeft: 2 }}>London</div>
         </Link>
-        <Link to="/" style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500, fontSize: 14, padding: "10px 20px" }}>
+        <Link to="/" style={{ color: "#2c3a1e", background: "#f0ebe0", border: "1px solid #d4c9b5", borderRadius: 6, textDecoration: "none", fontWeight: 500, fontSize: 15, padding: "10px 20px" }}>
           ← Back to home
         </Link>
       </nav>
 
       <div className="vly-page" style={{ maxWidth: 760, margin: "0 auto" }}>
-        <p style={{ fontSize: 10, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
+        <p style={{ fontSize: 11, color: "#8a9e7a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
         <h1 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "0.5rem", fontSize: 40 }}>Frequently asked questions</h1>
-        <p style={{ fontSize: 16, color: "#8a9e7a", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
+        <p style={{ fontSize: 17, color: "#8a9e7a", marginBottom: "2.5rem" }}>Everything you need to know about working with Venuely.</p>
 
         <div style={{ borderTop: "1px solid #d4c9b5" }}>
           {faqs.map((item, i) => (
@@ -79,7 +79,7 @@ export default function FAQPage() {
                   border: "none",
                   textAlign: "left",
                   padding: "1.25rem 0",
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: 600,
                   color: openFaq === i ? "#6b8a5a" : "#2c3a1e",
                   cursor: "pointer",
@@ -101,7 +101,7 @@ export default function FAQPage() {
                 </svg>
               </button>
               {openFaq === i && (
-                <div style={{ paddingBottom: "1.25rem", color: "#8a9e7a", lineHeight: 1.8, fontSize: 15 }}>
+                <div style={{ paddingBottom: "1.25rem", color: "#8a9e7a", lineHeight: 1.8, fontSize: 16 }}>
                   {item.a}
                 </div>
               )}
@@ -112,8 +112,8 @@ export default function FAQPage() {
         {/* CTA */}
         <div style={{ marginTop: "3.5rem", background: "#2c3a1e", borderRadius: 12, padding: "3rem", textAlign: "center" }}>
           <h2 style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, marginBottom: "0.75rem", lineHeight: 1.2, fontSize: 28 }}>Ready to send us a brief?</h2>
-          <p style={{ fontSize: 15, color: "#8a9e7a", maxWidth: 420, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Tell us about your event and we'll have a curated shortlist of London venues back to you within 24 hours.</p>
-          <Link to="/" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600, borderRadius: 6, textDecoration: "none", padding: "15px 32px", display: "inline-block" }}>
+          <p style={{ fontSize: 16, color: "#8a9e7a", maxWidth: 420, margin: "0 auto 1.75rem", lineHeight: 1.8 }}>Tell us about your event and we'll have a curated shortlist of London venues back to you within 24 hours.</p>
+          <Link to="/" style={{ background: "#8a9e7a", color: "#2c3a1e", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, borderRadius: 6, textDecoration: "none", padding: "15px 32px", display: "inline-block" }}>
             Send your brief →
           </Link>
         </div>

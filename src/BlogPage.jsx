@@ -146,11 +146,11 @@ The best venue finders work specifically in London and know the market in detail
 function PostList({ onSelect }) {
   return (
     <div style={{ maxWidth: 760, margin: '0 auto', padding: '4rem 1.5rem' }}>
-      <Link to="/" style={{ color: '#6B7280', fontSize: 14, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: '2.5rem' }}>
+      <Link to="/" style={{ color: '#6B7280', fontSize: 15, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: '2.5rem' }}>
         ← Back to home
       </Link>
       <h1 style={{ fontSize: 36, fontWeight: 700, color: '#111827', marginBottom: '0.5rem' }}>Venuely Blog</h1>
-      <p style={{ color: '#6B7280', fontSize: 16, marginBottom: '3rem' }}>Venue finding guides, London event inspiration, and advice for PAs & EAs.</p>
+      <p style={{ color: '#6B7280', fontSize: 17, marginBottom: '3rem' }}>Venue finding guides, London event inspiration, and advice for PAs & EAs.</p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         {posts.map((post) => (
@@ -167,14 +167,14 @@ function PostList({ onSelect }) {
             onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)'}
             onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
           >
-            <div style={{ display: 'flex', gap: 12, marginBottom: '0.75rem', color: '#9CA3AF', fontSize: 13 }}>
+            <div style={{ display: 'flex', gap: 12, marginBottom: '0.75rem', color: '#9CA3AF', fontSize: 14 }}>
               <span>{post.date}</span>
               <span>·</span>
               <span>{post.readTime}</span>
             </div>
             <h2 style={{ fontSize: 22, fontWeight: 600, color: '#111827', marginBottom: '0.6rem', lineHeight: 1.35 }}>{post.title}</h2>
             <p style={{ color: '#6B7280', lineHeight: 1.7, marginBottom: '1.25rem' }}>{post.excerpt}</p>
-            <span style={{ color: '#D85D3A', fontWeight: 600, fontSize: 14 }}>Read article →</span>
+            <span style={{ color: '#D85D3A', fontWeight: 600, fontSize: 15 }}>Read article →</span>
           </article>
         ))}
       </div>
@@ -228,18 +228,18 @@ function PostDetail({ slug, onBack }) {
     <div style={{ maxWidth: 700, margin: '0 auto', padding: '4rem 1.5rem' }}>
       <button
         onClick={onBack}
-        style={{ background: 'none', border: 'none', color: '#6B7280', fontSize: 14, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: '2.5rem', padding: 0 }}
+        style={{ background: 'none', border: 'none', color: '#6B7280', fontSize: 15, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: '2.5rem', padding: 0 }}
       >
         ← Back to blog
       </button>
-      <div style={{ display: 'flex', gap: 12, color: '#9CA3AF', fontSize: 13, marginBottom: '1rem' }}>
+      <div style={{ display: 'flex', gap: 12, color: '#9CA3AF', fontSize: 14, marginBottom: '1rem' }}>
         <span>{post.date}</span><span>·</span><span>{post.readTime}</span>
       </div>
       <h1 style={{ fontSize: 32, fontWeight: 700, color: '#111827', lineHeight: 1.3, marginBottom: '1.5rem' }}>{post.title}</h1>
-      <p style={{ color: '#6B7280', fontSize: 17, lineHeight: 1.7, borderLeft: '3px solid #D85D3A', paddingLeft: '1rem', marginBottom: '2.5rem' }}>{post.excerpt}</p>
+      <p style={{ color: '#6B7280', fontSize: 18, lineHeight: 1.7, borderLeft: '3px solid #D85D3A', paddingLeft: '1rem', marginBottom: '2.5rem' }}>{post.excerpt}</p>
       <div>{renderMarkdown(post.content)}</div>
       <div style={{ marginTop: '4rem', background: '#FFF7F5', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
-        <p style={{ fontWeight: 600, color: '#111827', fontSize: 18, marginBottom: '0.5rem' }}>Need a venue in London?</p>
+        <p style={{ fontWeight: 600, color: '#111827', fontSize: 19, marginBottom: '0.5rem' }}>Need a venue in London?</p>
         <p style={{ color: '#6B7280', marginBottom: '1.25rem' }}>Send us a brief and get a curated shortlist within 24 hours. It's free.</p>
         <a href="mailto:hello@venuely.london" style={{ background: '#D85D3A', color: '#fff', padding: '12px 28px', borderRadius: 8, textDecoration: 'none', fontWeight: 600, display: 'inline-block' }}>
           Get in touch →
