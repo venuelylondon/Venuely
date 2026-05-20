@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkoegwqp";
@@ -22,11 +22,13 @@ export default function VenuelyLanding() {
   const [cursor, setCursor] = useState({ x: -100, y: -100 });
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
+  const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
     setTimeout(() => setVisible(true), 100);
+    setTimeout(() => { if (videoRef.current) { videoRef.current.muted = true; videoRef.current.play().catch(() => {}); } }, 500);
     const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -203,7 +205,7 @@ export default function VenuelyLanding() {
         <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
           {/* Video background */}
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden", zIndex: 0 }}>
-            <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}>
+            <video ref={videoRef} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}>
               <source src="/venuely_promo.mp4" type="video/mp4" />
             </video>
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(15,22,8,0.70) 0%, rgba(15,22,8,0.65) 40%, rgba(15,22,8,0.82) 75%, rgba(15,22,8,0.95) 100%)" }} />
