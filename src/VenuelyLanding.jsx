@@ -200,8 +200,15 @@ export default function VenuelyLanding() {
       <div className="vly-hero">
 
         {/* Left dark panel - desktop only */}
-        <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-          <div style={fade(0.2)}>
+        <div className="vly-hero-left" style={{ background: "#2c3a1e", padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
+          {/* Video background */}
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden", zIndex: 0 }}>
+            <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+              <source src="/venuely_promo.mp4" type="video/mp4" />
+            </video>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(30,41,21,0.35) 0%, rgba(30,41,21,0.60) 50%, rgba(30,41,21,0.85) 100%)" }} />
+          </div>
+          <div style={{ ...fade(0.2), position: "relative", zIndex: 1 }}>
             <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
             <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 66, fontWeight: 300, color: "#e8e0d0", lineHeight: 1.02, letterSpacing: "-1.5px", marginBottom: "1.75rem" }}>
               Brief us once.<br />We handle<br />everything.
@@ -210,7 +217,7 @@ export default function VenuelyLanding() {
               Venuely is a fully managed corporate event concierge for PAs and EAs in London. Tell us what you need — we take it from there. Venues, negotiation, contracts, site visits and payment. Completely free to use.
             </p>
           </div>
-          <div style={fade(0.5)}>
+          <div style={{ ...fade(0.5), position: "relative", zIndex: 1 }}>
             <div style={{ columns: 2, columnGap: "2.5rem" }}>
               {bullets.map(item => (
                 <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10, breakInside: "avoid" }}>
