@@ -313,30 +313,30 @@ export default function VenuelyLanding() {
               {/* Name */}
               <div style={{ marginBottom: 12 }}>
                 <label style={labelStyle}>Your name</label>
-                <input type="text" placeholder="Jane Smith" value={name} onChange={e => setName(e.target.value)} style={fieldStyle} {...h} />
+                <input type="text" placeholder="your full name" value={name} onChange={e => setName(e.target.value)} style={fieldStyle} {...h} />
               </div>
 
               {/* Company */}
               <div style={{ marginBottom: 12 }}>
-                <label style={labelStyle}>Company</label>
-                <input type="text" placeholder="Acme Ltd" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
+                <label style={labelStyle}>Your company</label>
+                <input type="text" placeholder="e.g. Acme Ltd" value={company} onChange={e => setCompany(e.target.value)} style={fieldStyle} {...h} />
               </div>
 
               {/* Email + Phone */}
               <div className="vly-grid2" style={{ marginBottom: 12 }}>
                 <div>
                   <label style={labelStyle}>Work email</label>
-                  <input type="email" placeholder="jane@company.com" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                  <input type="email" placeholder="your work email" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} style={fieldStyle} {...h} />
                 </div>
                 <div>
                   <label style={labelStyle}>Phone number</label>
-                  <input type="tel" placeholder="+44 7700 900000" value={phone} onChange={e => { setPhone(e.target.value); setError(""); }} style={fieldStyle} {...h} />
+                  <input type="tel" placeholder="your phone number" value={phone} onChange={e => { setPhone(e.target.value); setError(""); }} style={fieldStyle} {...h} />
                 </div>
               </div>
 
               {/* Error message */}
               {error && (
-                <div style={{ color: "#993C1D", fontSize: 13, lineHeight: 1.5, marginBottom: 12, padding: "8px 12px", background: "rgba(153,60,29,0.07)", borderRadius: 4, border: "1px solid rgba(153,60,29,0.2)", fontWeight: 500 }}>
+                <div style={{ color: "#993C1D", fontSize: 12, lineHeight: 1.5, marginBottom: 12 }}>
                   {error}
                 </div>
               )}
@@ -395,7 +395,7 @@ export default function VenuelyLanding() {
               <div style={{ marginBottom: 16 }}>
                 <label style={labelStyle}>Anything else we should know?</label>
                 <textarea
-                  placeholder="Preferred areas of London, AV requirements, dietary needs, accessibility, vibe or theme..."
+                  placeholder="tell us anything that will help us find the perfect venue for you"
                   value={brief.requirements}
                   onChange={e => setBrief({ ...brief, requirements: e.target.value })}
                   style={{ ...fieldStyle, minHeight: 80, resize: "vertical" }}
@@ -651,7 +651,7 @@ export default function VenuelyLanding() {
             </div>
             <div>
               <p style={{ fontSize: 17, fontWeight: 500, color: "#2c3a1e", marginBottom: 4 }}>Follow us on Instagram</p>
-              <p style={{ fontSize: 14, color: "#5e7150" }}>@venuely.london — London venues, event inspo, behind the scenes</p>
+              <p style={{ fontSize: 14, color: "#5e7150" }}>@venuely.london</p>
             </div>
           </div>
           <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" className="vly-ig-btn" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, borderRadius: 6, textDecoration: "none" }} {...h}>
