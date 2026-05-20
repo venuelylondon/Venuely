@@ -28,7 +28,24 @@ export default function VenuelyLanding() {
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
     setTimeout(() => setVisible(true), 100);
-    setTimeout(() => { if (videoRef.current) { videoRef.current.muted = true; videoRef.current.play().catch(() => {}); } }, 500);
+    const tryPlay = () => {
+      const vid = videoRef.current;
+      if (!vid) return;
+      vid.muted = true;
+      // Force reload the src to bypass Chrome's deferred loading
+      const src = vid.src || vid.currentSrc;
+      if (src) {
+        vid.src = src;
+        vid.load();
+      }
+      vid.play().catch(() => {
+        // Retry on user interaction
+        const retry = () => { vid.play().catch(() => {}); document.removeEventListener('click', retry); document.removeEventListener('scroll', retry); };
+        document.addEventListener('click', retry, { once: true });
+        document.addEventListener('scroll', retry, { once: true });
+      });
+    };
+    setTimeout(tryPlay, 300);
     const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
