@@ -206,14 +206,14 @@ export default function VenuelyLanding() {
             <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}>
               <source src="/venuely_promo.mp4" type="video/mp4" />
             </video>
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(20,30,12,0.55) 0%, rgba(20,30,12,0.72) 50%, rgba(20,30,12,0.90) 100%)" }} />
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to bottom, rgba(15,22,8,0.70) 0%, rgba(15,22,8,0.65) 40%, rgba(15,22,8,0.82) 75%, rgba(15,22,8,0.95) 100%)" }} />
           </div>
           <div style={{ ...fade(0.2), position: "relative", zIndex: 1 }}>
-            <p style={{ fontSize: 11, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
+            <p style={{ fontSize: 11, color: "#c8d4b8", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "1.25rem" }}>Corporate event concierge · London</p>
             <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 66, fontWeight: 300, color: "#e8e0d0", lineHeight: 1.02, letterSpacing: "-1.5px", marginBottom: "1.75rem" }}>
               Brief us once.<br />We handle<br />everything.
             </h1>
-            <p style={{ fontSize: 16, color: "#c8d4b8", lineHeight: 1.85, maxWidth: 400, marginBottom: "2.5rem" }}>
+            <p style={{ fontSize: 16, color: "#dde8d4", lineHeight: 1.85, maxWidth: 400, marginBottom: "2.5rem" }}>
               Venuely is a fully managed corporate event concierge for PAs and EAs in London. Tell us what you need — we take it from there. Venues, negotiation, contracts, site visits and payment. Completely free to use.
             </p>
           </div>
