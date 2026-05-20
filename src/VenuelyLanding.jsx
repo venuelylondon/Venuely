@@ -602,6 +602,24 @@ export default function VenuelyLanding() {
           </a>
         </div>
 
+        {/* LinkedIn */}
+        <div className="vly-ig-card" style={{ background: "#f0ebe0", borderRadius: 12, marginBottom: "1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 46, height: 46, background: "#2c3a1e", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#e8e0d0">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 9.708H5.667V18h2.672V9.708zM7.003 6.5a1.55 1.55 0 1 0 0 3.099 1.55 1.55 0 0 0 0-3.099zM18.333 13.205c0-2.317-1.235-3.396-2.882-3.396-1.328 0-1.923.731-2.255 1.244v-1.345h-2.671c.035.754 0 8.292 0 8.292h2.671v-4.631c0-.24.017-.48.088-.652.193-.48.633-.977 1.371-.977.967 0 1.354.737 1.354 1.817V18h2.672l.052-4.795z"/>
+              </svg>
+            </div>
+            <div>
+              <p style={{ fontSize: 17, fontWeight: 500, color: "#2c3a1e", marginBottom: 4 }}>Follow us on LinkedIn</p>
+              <p style={{ fontSize: 14, color: "#5e7150" }}>Venuely London — venue insights, news, and corporate event tips</p>
+            </div>
+          </div>
+          <a href="https://www.linkedin.com/company/venuely-london/" target="_blank" rel="noreferrer" className="vly-ig-btn" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, borderRadius: 6, textDecoration: "none" }} {...h}>
+            Follow us →
+          </a>
+        </div>
+
         {/* Instagram */}
         <div className="vly-ig-card" style={{ background: "#f0ebe0", borderRadius: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -614,7 +632,7 @@ export default function VenuelyLanding() {
             </div>
             <div>
               <p style={{ fontSize: 17, fontWeight: 500, color: "#2c3a1e", marginBottom: 4 }}>Follow us on Instagram</p>
-              <p style={{ fontSize: 14, color: "#8a9e7a" }}>@venuely.london — London venues, event inspo, behind the scenes</p>
+              <p style={{ fontSize: 14, color: "#5e7150" }}>@venuely.london — London venues, event inspo, behind the scenes</p>
             </div>
           </div>
           <a href="https://www.instagram.com/venuely.london/" target="_blank" rel="noreferrer" className="vly-ig-btn" style={{ background: "#2c3a1e", color: "#f0ebe0", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, borderRadius: 6, textDecoration: "none" }} {...h}>
