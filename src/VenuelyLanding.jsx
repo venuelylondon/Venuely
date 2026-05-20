@@ -233,9 +233,9 @@ export default function VenuelyLanding() {
         </Link>
         <div className="vly-nav-right" style={{ display: "flex", alignItems: "center", gap: "2rem", ...fade(0.2) }}>
           <div className="vly-nav-links" style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
-            <Link to="/how-it-works" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>How it works</Link>
-            <Link to="/faq" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>FAQ</Link>
-            <Link to="/blog" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }} {...h}>Blog</Link>
+            <a href="#how-it-works" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>How it works</a>
+            <a href="#faq" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>FAQ</a>
+            <a href="#why-us" className="vly-nav-link" style={{ fontSize: 15, color: "#2c3a1e", textDecoration: "none", fontWeight: 500 }}>What we do</a>
           </div>
           <a
             href="#brief-form"
@@ -438,7 +438,7 @@ export default function VenuelyLanding() {
       </div>
 
       {/* How it works + sections below hero */}
-      <div className="vly-how" style={{ background: "#f5f0e8" }}>
+      <div id="how-it-works" className="vly-how" style={{ background: "#f5f0e8" }}>
         {/* Book a call CTA */}
         <div className="vly-cta-card" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "1.5rem", textAlign: "center" }}>
           <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Prefer to talk it through?</p>
@@ -516,7 +516,7 @@ export default function VenuelyLanding() {
         </div>
 
         {/* Why Venuely */}
-        <div style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "3rem" }} className="vly-why-card">
+        <div id="why-us" style={{ background: "#2c3a1e", borderRadius: 12, marginBottom: "3rem" }} className="vly-why-card">
           <p style={{ fontSize: 12, color: "#6b8a5a", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>Why choose Venuely</p>
           <h2 style={{ fontFamily: "Georgia, serif", color: "#e8e0d0", fontWeight: 300, lineHeight: 1.2, marginBottom: "2rem" }} className="vly-section-heading">Why PAs and EAs choose Venuely</h2>
 
@@ -555,6 +555,7 @@ export default function VenuelyLanding() {
         </div>
 
         {/* FAQ Section */}
+        <div id="faq" style={{ position: "relative", marginTop: "-1px" }} />
         <div className="vly-faq-section" style={{ marginBottom: "3rem" }}>
           <p style={{ fontSize: 12, color: "#5e7150", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "0.75rem" }}>FAQ</p>
           <h2 style={{ fontFamily: "Georgia, serif", fontWeight: 300, color: "#2c3a1e", lineHeight: 1.2, marginBottom: "0.5rem" }} className="vly-section-heading">Frequently asked questions</h2>
